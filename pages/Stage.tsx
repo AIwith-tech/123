@@ -7,6 +7,8 @@ interface StageProps {
 }
 
 const Stage: React.FC<StageProps> = ({ onNavigate }) => {
+  const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
+  
   const ringtoneFeeds = [
     { 
       id: 1, 
@@ -16,7 +18,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
       downloads: '12w', 
       likes: '5.6w',
       comments: '3.2k',
-      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAA4nHkDteDdtjc2v7eoZHqP-8ETcx8E-3mrvvX2ZP6ypr4ZMR-Lfw7wHKnnf8u03ZtSHW6H-Ag3g4DDqgaObkvnSLDBezuT6Io-PlpVjSZ8kV8uSyjocBlledRNldYQB8qNgqdd1R95-JHH_tOhPdoIB1ss7KQAoIWO_gNx3aCXrQVcMtY6SLrh55BvNre6fQaokGxkF2zw7ckZ_iar9ZFxH8VuIB9kcEIDMWBm68WOj-1XrFR7JsZYTM-RK5Q2SzBuQI0E7zxfZGN' 
+      img: imageUrl 
     },
     { 
       id: 2, 
@@ -26,7 +28,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
       downloads: '8.4w', 
       likes: '1.2w',
       comments: '1.5k',
-      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' 
+      img: imageUrl 
     }
   ];
 
@@ -63,7 +65,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
             </div>
 
-            {/* 右侧功能堆叠 - 向上移动避免被遮挡 */}
+            {/* 右侧功能堆叠 */}
             <div className="absolute right-4 bottom-44 z-30 flex flex-col items-center gap-6">
               <div className="relative">
                 <div className="size-12 rounded-full border-2 border-primary overflow-hidden shadow-2xl">
@@ -82,7 +84,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
               </button>
             </div>
 
-            {/* 底部信息层 - 增加底部外边距以避开 BottomNav */}
+            {/* 底部信息层 */}
             <div className="relative z-20 px-6 pb-28 w-full max-w-full">
               <div className="flex flex-col gap-2 mb-6">
                 <h3 className="text-white text-xl font-black tracking-tight drop-shadow-lg">@{feed.user}</h3>

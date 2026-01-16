@@ -8,11 +8,12 @@ interface OfflineStageProps {
 
 const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
   const [filter, setFilter] = useState<'ongoing' | 'upcoming' | 'ended'>('ongoing');
+  const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
 
   const events: PerformanceEvent[] = [
-    { id: '1', title: '2024 中国音乐学院春季优秀作品展演', date: '2024.04.15 - 04.20', location: '北京 · 国音音乐厅', status: 'ongoing', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8GUyqSsEPYOF1Fd4oqNpEpYOobpoAm7YTFKuN0M_38SgRQGkYRmFkEOpl3jCHPhYN-UFagDgiOyjatfhFYQs8-aqSpRhY4FojHuvUcsaSzj4eYsXIzLDk29zp5ZeyGIfZYbcTNMZ1LBgleaNo50BpeR3b280XqXtuxYpw_ChEPzCAcuMY-XoEN3m9ggWXs82VFsDgXAlM9l1tb-na9boAovj9OoUZ4RSmH-_UklbHz7aiHODFY5lvO1PpENAeeEfsf751c3B08TX' },
-    { id: '2', title: '全国青少年钢琴大奖赛（上海站）', date: '2024.06.10', location: '上海 · 东方艺术中心', status: 'upcoming', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' },
-    { id: '3', title: '2023 冬季民乐盛典回顾展', date: '2023.12.01', location: '广州 · 星海音乐厅', status: 'ended', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAA4nHkDteDdtjc2v7eoZHqP-8ETcx8E-3mrvvX2ZP6ypr4ZMR-Lfw7wHKnnf8u03ZtSHW6H-Ag3g4DDqgaObkvnSLDBezuT6Io-PlpVjSZ8kV8uSyjocBlledRNldYQB8qNgqdd1R95-JHH_tOhPdoIB1ss7KQAoIWO_gNx3aCXrQVcMtY6SLrh55BvNre6fQaokGxkF2zw7ckZ_iar9ZFxH8VuIB9kcEIDMWBm68WOj-1XrFR7JsZYTM-RK5Q2SzBuQI0E7zxfZGN' },
+    { id: '1', title: '2024 中国音乐学院春季优秀作品展演', date: '2024.04.15 - 04.20', location: '北京 · 国音音乐厅', status: 'ongoing', image: imageUrl },
+    { id: '2', title: '全国青少年钢琴大奖赛（上海站）', date: '2024.06.10', location: '上海 · 东方艺术中心', status: 'upcoming', image: imageUrl },
+    { id: '3', title: '2023 冬季民乐盛典回顾展', date: '2023.12.01', location: '广州 · 星海音乐厅', status: 'ended', image: imageUrl },
   ];
 
   const filteredEvents = events.filter(e => e.status === filter);
@@ -69,7 +70,7 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
                   </div>
                 </div>
                 {event.status === 'ongoing' ? (
-                  <button onClick={() => onNavigate(Page.Registration)} className="w-full bg-primary text-background-dark py-4 rounded-2xl font-black text-sm tracking-widest italic flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl shadow-primary/10">
+                  <button onClick={() => onNavigate(Page.Registration)} className="w-full bg-primary text-background-dark py-4 rounded-2xl font-black text-sm tracking-widest italic flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl shadow-primary/20">
                     立即报名参演
                     <span className="material-symbols-outlined text-lg">local_activity</span>
                   </button>

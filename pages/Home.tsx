@@ -7,6 +7,8 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
+
   return (
     <div className="flex flex-col min-h-full pb-28 bg-[#0B1E3B] font-sans">
       {/* 顶部导航 */}
@@ -29,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="px-5 pt-4">
         <div className="relative h-48 rounded-[2.5rem] overflow-hidden shadow-2xl group active:scale-[0.98] transition-all">
           <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8GUyqSsEPYOF1Fd4oqNpEpYOobpoAm7YTFKuN0M_38SgRQGkYRmFkEOpl3jCHPhYN-UFagDgiOyjatfhFYQs8-aqSpRhY4FojHuvUcsaSzj4eYsXIzLDk29zp5ZeyGIfZYbcTNMZ1LBgleaNo50BpeR3b280XqXtuxYpw_ChEPzCAcuMY-XoEN3m9ggWXs82VFsDgXAlM9l1tb-na9boAovj9OoUZ4RSmH-_UklbHz7aiHODFY5lvO1PpENAeeEfsf751c3B08TX" 
+            src={imageUrl} 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
             alt="Banner"
           />
@@ -113,12 +115,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
         <div className="space-y-4">
           {[
-            { title: '莫扎特：D大调变奏曲深度解析', teacher: '李名阳 教授', price: '¥199', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' },
-            { title: '大师班：小提琴揉弦技巧进阶', teacher: '张羽 教授', price: '¥258', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAA4nHkDteDdtjc2v7eoZHqP-8ETcx8E-3mrvvX2ZP6ypr4ZMR-Lfw7wHKnnf8u03ZtSHW6H-Ag3g4DDqgaObkvnSLDBezuT6Io-PlpVjSZ8kV8uSyjocBlledRNldYQB8qNgqdd1R95-JHH_tOhPdoIB1ss7KQAoIWO_gNx3aCXrQVcMtY6SLrh55BvNre6fQaokGxkF2zw7ckZ_iar9ZFxH8VuIB9kcEIDMWBm68WOj-1XrFR7JsZYTM-RK5Q2SzBuQI0E7zxfZGN' }
+            { title: '莫扎特：D大调变奏曲深度解析', teacher: '李名阳 教授', price: '¥199' },
+            { title: '大师班：小提琴揉弦技巧进阶', teacher: '张羽 教授', price: '¥258' }
           ].map((item, i) => (
             <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="bg-surface-dark/20 p-4 rounded-3xl flex gap-5 border border-white/5 active:bg-white/5 transition-all group">
               <div className="size-20 rounded-2xl overflow-hidden shrink-0 shadow-lg group-hover:scale-105 transition-transform">
-                <img src={item.img} className="w-full h-full object-cover" alt={item.title} />
+                <img src={imageUrl} className="w-full h-full object-cover" alt={item.title} />
               </div>
               <div className="flex-1 flex flex-col justify-between py-1">
                 <div>

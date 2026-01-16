@@ -7,11 +7,13 @@ interface CourseDetailProps {
 }
 
 const CourseDetail: React.FC<CourseDetailProps> = ({ onNavigate }) => {
+  const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
+  
   return (
     <div className="flex flex-col min-h-full">
       <div className="aspect-video w-full relative bg-black">
         <img 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC" 
+          src={imageUrl} 
           className="w-full h-full object-cover opacity-60" 
           alt="Course Cover" 
         />
