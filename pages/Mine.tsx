@@ -11,7 +11,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
-      {/* 顶部标题栏 - 与学习中心样式一致 */}
+      {/* 顶部标题栏 - 与学习中心样式保持一致 */}
       <header className="px-6 pt-8 pb-4 flex items-center justify-between">
         <div>
           <h1 className="text-white text-2xl font-black font-display tracking-tight">个人中心</h1>
@@ -66,7 +66,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 作品发行 - 新增板块 */}
+      {/* 作品发行 */}
       <section className="px-5 mb-8">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-1 h-5 bg-primary rounded-full"></div>
@@ -79,7 +79,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
              </div>
              <div>
                 <h4 className="text-white text-sm font-black font-display">视频彩铃发行</h4>
-                <p className="text-white/30 text-[10px] font-bold tracking-tight">让世界在来电间听见你的旋律</p>
+                <p className="text-white/30 text-[10px] font-bold tracking-tight">由中国音乐学院认证，让您的演奏成为他人的专属来电风景</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto">chevron_right</span>
           </div>
@@ -89,53 +89,9 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
              </div>
              <div>
                 <h4 className="text-white text-sm font-black font-display">咪咕音乐发行</h4>
-                <p className="text-white/30 text-[10px] font-bold tracking-tight">专业宣发渠道，让好音乐被更多人发现</p>
+                <p className="text-white/30 text-[10px] font-bold tracking-tight">打通全球数字流媒体渠道，开启职业音乐人第一步</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto">chevron_right</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 学习进度卡片 */}
-      <section className="px-5 mb-8">
-        <div className="bg-[#152B4D]/60 rounded-[2rem] border border-white/5 p-6 backdrop-blur-xl">
-          <div className="flex items-center justify-between mb-2">
-            <div>
-              <h3 className="text-white text-base font-black font-display">学习进度</h3>
-              <p className="text-[10px] text-white/30 font-medium">本周目标完成情况</p>
-            </div>
-            <button className="text-primary text-[10px] font-black flex items-center gap-1 bg-primary/10 px-3 py-1 rounded-full border border-primary/10">
-              详情 <span className="material-symbols-outlined text-[12px]">chevron_right</span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-8 mt-6">
-            <div className="relative size-24 flex-shrink-0">
-              <svg className="size-full -rotate-90" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="16" fill="none" className="stroke-white/5" strokeWidth="3" />
-                <circle cx="18" cy="18" r="16" fill="none" className="stroke-primary" strokeWidth="3" strokeDasharray="75 100" strokeLinecap="round" />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center flex-col leading-none">
-                <span className="text-white text-2xl font-black font-display tracking-tighter">75<span className="text-[10px] font-sans font-medium ml-0.5">%</span></span>
-              </div>
-            </div>
-
-            <div className="flex-1 space-y-4">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="size-2 rounded-full bg-primary"></div>
-                  <span className="text-white/60 text-xs font-bold">钢琴九级备考</span>
-                </div>
-                <span className="text-white text-xs font-black">15/20</span>
-              </div>
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="size-2 rounded-full bg-white/10"></div>
-                  <span className="text-white/30 text-xs font-bold">乐理基础</span>
-                </div>
-                <span className="text-white/20 text-xs font-bold italic">未开始</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -174,15 +130,15 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
           <p className="text-[10px] text-white/30 font-medium">考级/课程/教材</p>
         </div>
 
-        <div onClick={() => onNavigate(Page.AIStudio)} className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all">
+        {/* AI精修作品 - 展示区域，不再跳转 */}
+        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 relative overflow-hidden">
           <div className="size-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
             <span className="material-symbols-outlined text-2xl fill">auto_fix_high</span>
           </div>
           <div className="flex items-center justify-between mb-1">
-            <h4 className="text-white text-sm font-black">AI精修</h4>
-            <span className="material-symbols-outlined text-white/10 text-base">arrow_forward</span>
+            <h4 className="text-white text-sm font-black">AI精修作品</h4>
           </div>
-          <p className="text-[10px] text-white/30 font-medium">剩余 3 次免费</p>
+          <p className="text-[10px] text-white/30 font-medium">已完成 5 件精修作品</p>
         </div>
       </section>
 

@@ -13,7 +13,7 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
         <div className="flex items-center gap-4">
           <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-primary transition-colors">arrow_back_ios</button>
           <div>
-            <h1 className="text-white text-base font-black font-display">AI 智慧工作室</h1>
+            <h1 className="text-white text-base font-black font-display tracking-tight">AI工作室</h1>
             <p className="text-[8px] text-primary/60 font-bold tracking-[0.3em] uppercase">Intelligence Music Lab</p>
           </div>
         </div>
@@ -21,7 +21,7 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
       </header>
 
       <main className="p-6 space-y-8">
-        {/* 歌曲精修卡片 */}
+        {/* AI歌曲精修卡片 */}
         <div className="group relative bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-3xl p-8 rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden transition-all">
           <div className="relative z-10">
             <div className="flex items-start justify-between mb-8">
@@ -30,12 +30,12 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
               </div>
               <div className="text-right">
                 <span className="text-[10px] text-primary/60 font-black tracking-widest uppercase">SINGLE SERVICE</span>
-                <p className="text-white text-2xl font-black font-display mt-1 tracking-tight">歌曲精修</p>
+                <p className="text-white text-2xl font-black font-display mt-1 tracking-tight">AI歌曲精修</p>
               </div>
             </div>
 
             <div className="space-y-4 mb-8">
-              <p className="text-white/40 text-[10px] font-bold tracking-widest leading-relaxed">基于百万级音频数据训练的 AI 大模型，全方位重塑您的演奏音质。</p>
+              <p className="text-white/40 text-[10px] font-bold tracking-widest leading-relaxed">基于百万级音频数据训练的 AI 大模型，全方位重塑您的演奏音质，达到录音室级别表现。</p>
               <div className="grid grid-cols-2 gap-3">
                 {['全频段降噪', '智能混响', '音高校准', '动态均衡'].map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-white/80 text-[11px] font-bold">
