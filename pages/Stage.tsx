@@ -32,11 +32,11 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col h-full bg-black overflow-hidden relative font-sans">
-      {/* 顶部投稿提醒 - 极简高亮设计 */}
+      {/* 顶部投稿提醒 */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] flex justify-between items-center pointer-events-none">
         <div className="bg-black/30 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full pointer-events-auto flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-lg fill">campaign</span>
-          <span className="text-white/90 text-[11px] font-bold">投稿赢百万流量，成音乐红人</span>
+          <span className="text-white/90 text-[11px] font-bold">投稿赢百万流量</span>
           <span className="material-symbols-outlined text-white/40 text-sm">chevron_right</span>
         </div>
         <button className="size-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white pointer-events-auto active:scale-90 transition-all">
@@ -47,7 +47,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
       {/* 滑动引导动画 */}
       <div className="absolute top-1/2 right-4 -translate-y-1/2 z-40 flex flex-col items-center gap-1 opacity-60">
         <span className="material-symbols-outlined text-white animate-bounce text-xl">keyboard_double_arrow_up</span>
-        <span className="[writing-mode:vertical-rl] text-white/50 text-[10px] tracking-widest font-bold">上下滑动发现</span>
+        <span className="[writing-mode:vertical-rl] text-white/50 text-[10px] tracking-widest font-bold">上下滑动</span>
       </div>
 
       {/* 主信息流 */}
@@ -57,14 +57,14 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
             key={feed.id} 
             className="h-full w-full snap-start snap-always relative flex flex-col justify-end"
           >
-            {/* 背景层：画面沉浸感加强 */}
+            {/* 背景层 */}
             <div className="absolute inset-0 z-0">
               <img src={feed.img} className="w-full h-full object-cover scale-105" alt={feed.title} />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
             </div>
 
-            {/* 右侧功能堆叠 (仅保留分享与头像) */}
-            <div className="absolute right-4 bottom-28 z-30 flex flex-col items-center gap-6">
+            {/* 右侧功能堆叠 - 向上移动避免被遮挡 */}
+            <div className="absolute right-4 bottom-44 z-30 flex flex-col items-center gap-6">
               <div className="relative">
                 <div className="size-12 rounded-full border-2 border-primary overflow-hidden shadow-2xl">
                   <img src={feed.img} className="w-full h-full object-cover" alt="avatar" />
@@ -82,14 +82,13 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
               </button>
             </div>
 
-            {/* 底部信息层 */}
-            <div className="relative z-20 px-6 pb-6 w-full max-w-full">
+            {/* 底部信息层 - 增加底部外边距以避开 BottomNav */}
+            <div className="relative z-20 px-6 pb-28 w-full max-w-full">
               <div className="flex flex-col gap-2 mb-6">
                 <h3 className="text-white text-xl font-black tracking-tight drop-shadow-lg">@{feed.user}</h3>
                 <p className="text-white/95 text-sm font-bold leading-relaxed line-clamp-2 drop-shadow-md">{feed.title}</p>
                 <p className="text-white/60 text-xs font-medium mt-1">{feed.desc}</p>
                 
-                {/* 音乐标签：动态效果 */}
                 <div className="flex items-center gap-2 mt-2">
                   <div className="flex items-center gap-1.5 bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/5 overflow-hidden max-w-[180px]">
                     <span className="material-symbols-outlined text-primary text-sm animate-spin-slow">music_note</span>
@@ -100,10 +99,9 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* 核心操作：一键设置视频彩铃 (大按钮) */}
-              <button className="group relative w-full h-14 rounded-2xl overflow-hidden active:scale-[0.97] transition-all">
+              {/* 核心操作：一键设置视频彩铃 */}
+              <button className="group relative w-full h-14 rounded-2xl overflow-hidden active:scale-[0.97] transition-all shadow-2xl">
                 <div className="absolute inset-0 bg-primary group-hover:bg-primary-dark transition-colors"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_70%)] opacity-30"></div>
                 <div className="relative flex items-center justify-center gap-3 h-full">
                   <span className="material-symbols-outlined text-background-dark text-2xl fill">video_settings</span>
                   <span className="text-background-dark font-black text-base tracking-widest italic">一键设置视频彩铃</span>

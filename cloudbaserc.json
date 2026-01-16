@@ -1,0 +1,21 @@
+
+{
+  "envId": "您的云开发环境ID",
+  "framework": {
+    "name": "migu-music-h5",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "buildCommand": "npm run build",
+          "outputPath": "dist",
+          "cloudPath": "/",
+          "ignore": [
+            ".git",
+            "node_modules/**"
+          ]
+        }
+      }
+    }
+  }
+}

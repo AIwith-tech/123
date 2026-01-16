@@ -9,110 +9,206 @@ interface CourseCenterProps {
 const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState('music');
 
+  const masterCourses = [
+    { 
+      title: '非遗文化：古琴艺术指法深度解析', 
+      teacher: '龚一 教授', 
+      tag: '非遗国家级传承人', 
+      price: '¥399', 
+      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyHoo8t6Y6ToeXtFpE23EBMJvlzd7oiTCFYVaoSXRFv9AgxC5dGFkDQ1_pCWBtJ9fnYITGmbRxww7XWcS0oKEr2-w47iQ89IHoUKl_wReM_-7QBsA89wJBr_ENbujeHX34R6pb5zLvlZLWctPWIjPegYfdUt8gfh1RTP5KAOBBkPF9eJ9YAAIc1KWnM0LzO8Awv2IJBKkehOd1TYvDe3Wg-xiizcHoLGKvT9GxSY4JF2zsCUDYXveF-JvCUOvCnYh-tvTUMi73P8Ty' 
+    },
+    { 
+      title: '德奥经典：钢琴演奏的逻辑与美学', 
+      teacher: '杨韵琳 教授', 
+      tag: '国音钢琴系主任', 
+      price: '¥599', 
+      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' 
+    },
+    { 
+      title: '流行前沿：现代音乐制作与编曲思维', 
+      teacher: '知名制作人 A', 
+      tag: '金牌制作人', 
+      price: '¥499', 
+      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8GUyqSsEPYOF1Fd4oqNpEpYOobpoAm7YTFKuN0M_38SgRQGkYRmFkEOpl3jCHPhYN-UFagDgiOyjatfhFYQs8-aqSpRhY4FojHuvUcsaSzj4eYsXIzLDk29zp5ZeyGIfZYbcTNMZ1LBgleaNo50BpeR3b280XqXtuxYpw_ChEPzCAcuMY-XoEN3m9ggWXs82VFsDgXAlM9l1tb-na9boAovj9OoUZ4RSmH-_UklbHz7aiHODFY5lvO1PpENAeeEfsf751c3B08TX' 
+    }
+  ];
+
+  const engineerModules = [
+    { title: 'AI 交互作曲', icon: 'bolt', desc: '基于大模型的旋律生成', level: 'Level 1' },
+    { title: '神经音频引擎', icon: 'memory', desc: '实时音色迁移技术', level: 'Level 2' },
+    { title: '空间音频混音', icon: 'surround_sound', desc: '全景声与算法驱动', level: 'Level 3' },
+    { title: '虚拟人乐手', icon: 'face_retouching_natural', desc: '动作捕捉与智能演奏', level: 'Level 2' }
+  ];
+
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B]">
-      <header className="sticky top-0 z-20 glass px-6 py-5 flex items-center gap-5">
-        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60">arrow_back_ios</button>
-        <div>
-          <h1 className="text-white text-base font-black font-display tracking-tight">发现名师课程</h1>
-          <p className="text-[8px] text-primary/60 font-bold uppercase tracking-[0.2em]">Explore Global Courses</p>
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
+      <header className="sticky top-0 z-30 glass px-6 py-6 border-b border-white/5">
+        <div className="flex items-center gap-4">
+          <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60">arrow_back_ios</button>
+          <div>
+            <h1 className="text-white text-xl font-black font-display tracking-tight italic">课程中心</h1>
+            <p className="text-[9px] text-primary/60 font-black uppercase tracking-[0.3em]">Knowledge Powerhouse</p>
+          </div>
         </div>
       </header>
 
-      {/* 分类标签 */}
-      <div className="flex gap-10 px-6 py-4 border-b border-white/5 overflow-x-auto no-scrollbar">
+      {/* 顶部标签切换 - 悬浮胶囊样式 */}
+      <nav className="flex p-2 m-6 bg-white/5 rounded-2xl border border-white/5 sticky top-[84px] z-20 backdrop-blur-xl">
         {[
-          { id: 'music', label: '精品音乐课' },
-          { id: 'engineer', label: 'AI认证计划' },
-          { id: 'master', label: '大师殿堂' }
+          { id: 'music', label: '精品课' },
+          { id: 'master', label: '大师课' },
+          { id: 'engineer', label: 'AI音乐工程师' }
         ].map(tab => (
           <button 
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`whitespace-nowrap text-sm font-black pb-2 transition-all relative ${activeTab === tab.id ? 'text-primary' : 'text-white/30'}`}
+            className={`flex-1 py-3 text-[11px] font-black transition-all rounded-xl ${activeTab === tab.id ? 'bg-primary text-background-dark shadow-lg shadow-primary/20' : 'text-white/40 hover:text-white/60'}`}
           >
             {tab.label}
-            {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"></div>}
           </button>
         ))}
-      </div>
+      </nav>
 
-      <main className="p-6">
-        {/* AI 工程师认证 - 极简科技风格 */}
-        {activeTab === 'engineer' && (
-          <div className="mb-8 relative bg-gradient-to-br from-[#121212] to-[#1e3c72]/20 p-8 rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden group">
-            <div className="relative z-10">
-              <span className="text-[9px] bg-primary/10 text-primary px-3 py-1 rounded-full font-black tracking-[0.2em] mb-4 inline-block">ACCREDITATION</span>
-              <h2 className="text-white text-2xl font-black italic mb-2 tracking-tighter font-display">AI 音乐工程师认证</h2>
-              <p className="text-white/40 text-[10px] mb-8 font-medium leading-relaxed max-w-[80%]">跨学科融合教学，从声学原理到 AI 算法，由咪咕音乐与中国音乐学院联合签发权威证书。</p>
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col">
-                  <span className="text-[9px] text-white/30 font-bold uppercase">Price</span>
-                  <span className="text-white text-xl font-black tracking-tight font-display">¥29.9<span className="text-[10px] text-white/40 italic font-sans ml-1">/月</span></span>
+      <main className="px-6">
+        {/* 精品课 - 垂直双栏布局 */}
+        {activeTab === 'music' && (
+          <div className="grid grid-cols-1 gap-6">
+            {[
+              { title: '乐理基础必修：从零开始识五线谱', teacher: '王莉', students: '4.2w', price: '¥49', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' },
+              { title: '钢琴考级精讲：莫扎特奏鸣曲集', teacher: '陈思教授', students: '1.5w', price: '¥199', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAA4nHkDteDdtjc2v7eoZHqP-8ETcx8E-3mrvvX2ZP6ypr4ZMR-Lfw7wHKnnf8u03ZtSHW6H-Ag3g4DDqgaObkvnSLDBezuT6Io-PlpVjSZ8kV8uSyjocBlledRNldYQB8qNgqdd1R95-JHH_tOhPdoIB1ss7KQAoIWO_gNx3aCXrQVcMtY6SLrh55BvNre6fQaokGxkF2zw7ckZ_iar9ZFxH8VuIB9kcEIDMWBm68WOj-1XrFR7JsZYTM-RK5Q2SzBuQI0E7zxfZGN' },
+              { title: '民乐入门：二胡基础弓法实践', teacher: '张悦老师', students: '8k', price: '¥128', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8GUyqSsEPYOF1Fd4oqNpEpYOobpoAm7YTFKuN0M_38SgRQGkYRmFkEOpl3jCHPhYN-UFagDgiOyjatfhFYQs8-aqSpRhY4FojHuvUcsaSzj4eYsXIzLDk29zp5ZeyGIfZYbcTNMZ1LBgleaNo50BpeR3b280XqXtuxYpw_ChEPzCAcuMY-XoEN3m9ggWXs82VFsDgXAlM9l1tb-na9boAovj9OoUZ4RSmH-_UklbHz7aiHODFY5lvO1PpENAeeEfsf751c3B08TX' }
+            ].map((course, i) => (
+              <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="bg-white/5 rounded-[2.5rem] p-4 flex gap-5 border border-white/5 active:scale-95 transition-all group shadow-xl">
+                <div className="size-28 rounded-3xl overflow-hidden shrink-0 shadow-lg group-hover:scale-105 transition-transform">
+                  <img src={course.img} className="w-full h-full object-cover" alt={course.title} />
                 </div>
-                <button className="flex-1 bg-primary text-background-dark h-12 rounded-2xl font-black text-xs tracking-widest hover:bg-white transition-all shadow-xl shadow-primary/10">立即加入认证计划</button>
+                <div className="flex-1 flex flex-col justify-between py-1">
+                  <div>
+                    <h4 className="text-white text-sm font-black font-display leading-tight line-clamp-2">{course.title}</h4>
+                    <p className="text-white/40 text-[9px] font-bold mt-2 tracking-widest uppercase">{course.teacher} · {course.students}人已学</p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-primary text-base font-black italic tracking-tighter">{course.price}</span>
+                    <div className="size-8 rounded-full bg-white/10 flex items-center justify-center text-white/20 group-hover:text-primary transition-colors">
+                      <span className="material-symbols-outlined text-base">arrow_forward</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <span className="material-symbols-outlined absolute -right-8 -top-8 text-white/[0.03] text-[12rem] font-light rotate-12 pointer-events-none">memory</span>
+            ))}
           </div>
         )}
 
-        <div className="space-y-6">
-          {activeTab === 'master' && (
-            <div className="grid grid-cols-1 gap-6">
-              {[
-                { title: '莫扎特作品的演奏美学', teacher: '李名阳 教授', price: '¥199', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8GUyqSsEPYOF1Fd4oqNpEpYOobpoAm7YTFKuN0M_38SgRQGkYRmFkEOpl3jCHPhYN-UFagDgiOyjatfhFYQs8-aqSpRhY4FojHuvUcsaSzj4eYsXIzLDk29zp5ZeyGIfZYbcTNMZ1LBgleaNo50BpeR3b280XqXtuxYpw_ChEPzCAcuMY-XoEN3m9ggWXs82VFsDgXAlM9l1tb-na9boAovj9OoUZ4RSmH-_UklbHz7aiHODFY5lvO1PpENAeeEfsf751c3B08TX' },
-                { title: '肖邦：浪漫主义的极致解读', teacher: '张羽 教授', price: '¥258', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC' }
-              ].map((c, i) => (
-                <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="group relative bg-[#11294d]/40 rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl active:scale-[0.98] transition-all">
-                   <div className="h-48 relative overflow-hidden">
-                      <img src={c.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={c.title} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
-                      <div className="absolute bottom-4 left-5 bg-primary/20 backdrop-blur-md text-primary text-[8px] font-black px-3 py-1 rounded-full border border-primary/20 tracking-[0.2em] uppercase italic">Masterclass</div>
-                   </div>
-                   <div className="p-6 flex justify-between items-end">
-                      <div>
-                        <h4 className="text-white text-base font-black font-display mb-1 tracking-tight">{c.title}</h4>
-                        <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">{c.teacher}</span>
-                      </div>
-                      <div className="text-right flex flex-col items-end gap-1">
-                         <span className="text-primary font-black text-lg font-display">{c.price}</span>
-                         <span className="material-symbols-outlined text-white/20 text-xl font-light">shopping_cart</span>
-                      </div>
-                   </div>
+        {/* 大师课 - 宽幅艺术卡片 */}
+        {activeTab === 'master' && (
+          <div className="space-y-10">
+            {masterCourses.map((c, i) => (
+              <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/10">
+                <img src={c.img} className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" alt={c.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-black/30"></div>
+                
+                <div className="absolute top-6 left-6">
+                  <span className="bg-primary/90 text-background-dark text-[10px] font-black px-4 py-1.5 rounded-full italic tracking-widest uppercase shadow-xl">MASTER</span>
                 </div>
-              ))}
-            </div>
-          )}
 
-          {activeTab === 'music' && (
-             <div className="grid grid-cols-1 gap-5">
-                {[
-                  { title: '钢琴考级一级：乐理与演奏精讲', teacher: '王伟老师', price: '¥99', tag: 'RECOMMENDED', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAA4nHkDteDdtjc2v7eoZHqP-8ETcx8E-3mrvvX2ZP6ypr4ZMR-Lfw7wHKnnf8u03ZtSHW6H-Ag3g4DDqgaObkvnSLDBezuT6Io-PlpVjSZ8kV8uSyjocBlledRNldYQB8qNgqdd1R95-JHH_tOhPdoIB1ss7KQAoIWO_gNx3aCXrQVcMtY6SLrh55BvNre6fQaokGxkF2zw7ckZ_iar9ZFxH8VuIB9kcEIDMWBm68WOj-1XrFR7JsZYTM-RK5Q2SzBuQI0E7zxfZGN' },
-                  { title: '古筝技法：从入门到专业跨越', teacher: '赵琴老师', price: '免费', tag: 'FREE', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyHoo8t6Y6ToeXtFpE23EBMJvlzd7oiTCFYVaoSXRFv9AgxC5dGFkDQ1_pCWBtJ9fnYITGmbRxww7XWcS0oKEr2-w47iQ89IHoUKl_wReM_-7QBsA89wJBr_ENbujeHX34R6pb5zLvlZLWctPWIjPegYfdUt8gfh1RTP5KAOBBkPF9eJ9YAAIc1KWnM0LzO8Awv2IJBKkehOd1TYvDe3Wg-xiizcHoLGKvT9GxSY4JF2zsCUDYXveF-JvCUOvCnYh-tvTUMi73P8Ty' }
-                ].map((c, i) => (
-                  <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="bg-surface-dark/30 p-4 rounded-3xl flex gap-5 border border-white/5 active:bg-white/5 transition-all">
-                    <div className="size-24 rounded-2xl overflow-hidden shrink-0 shadow-xl">
-                      <img src={c.img} className="w-full h-full object-cover" alt={c.title} />
-                    </div>
-                    <div className="flex-1 flex flex-col justify-between py-1">
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                           <span className="text-[7px] font-black text-primary border border-primary/30 px-1.5 py-0.5 rounded italic">{c.tag}</span>
-                           <h4 className="text-white text-xs font-black line-clamp-1 font-display">{c.title}</h4>
-                        </div>
-                        <span className="text-[9px] text-white/40 font-bold uppercase tracking-widest">{c.teacher}</span>
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="bg-white/10 backdrop-blur-md text-white text-[9px] font-black px-3 py-1 rounded-full border border-white/10">{c.tag}</span>
+                  </div>
+                  <h3 className="text-white text-2xl font-black font-display leading-tight mb-4">{c.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <p className="text-white/60 text-xs font-bold">{c.teacher}</p>
+                    <span className="text-primary text-lg font-black italic">{c.price}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* AI音乐工程师 - 复合式深邃页面 */}
+        {activeTab === 'engineer' && (
+          <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* 核心认证卡片 - 视觉重构 */}
+            <div className="relative bg-[#1A3A6B]/30 rounded-[3rem] border border-white/10 p-10 overflow-hidden shadow-2xl">
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="size-12 rounded-2xl bg-primary flex items-center justify-center text-background-dark shadow-lg">
+                    <span className="material-symbols-outlined text-3xl fill">memory</span>
+                  </div>
+                  <div>
+                    <span className="text-white text-lg font-black font-display block leading-none">AI 音乐工程师</span>
+                    <span className="text-primary/60 text-[9px] font-black uppercase tracking-[0.2em]">Professional Certification</span>
+                  </div>
+                </div>
+
+                <h2 className="text-white text-3xl font-black italic tracking-tighter mb-4 leading-none">定义音乐<br/>的下一个时代</h2>
+                <p className="text-white/40 text-[10px] font-bold leading-relaxed mb-10 max-w-[80%] uppercase tracking-widest">中国音乐学院 × 咪咕音乐 联合认证</p>
+                
+                <div className="flex flex-col gap-3">
+                  <button className="h-14 bg-white text-background-dark rounded-2xl font-black text-sm tracking-widest italic flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl shadow-white/5">
+                    立即加入认证计划
+                    <span className="material-symbols-outlined text-lg">bolt</span>
+                  </button>
+                  <p className="text-center text-[9px] text-white/20 font-bold uppercase tracking-widest mt-2">Certified by Migu & CCOM</p>
+                </div>
+              </div>
+
+              {/* 背景动效装饰 */}
+              <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                 <span className="material-symbols-outlined text-[12rem] font-light rotate-12">terminal</span>
+              </div>
+              <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(242,185,13,0.05),transparent_70%)] pointer-events-none"></div>
+            </div>
+
+            {/* 核心技能矩阵 - 丰富板块内容 */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                 <h4 className="text-white font-black text-base font-display">核心技能矩阵</h4>
+                 <span className="text-[10px] text-primary/60 font-black uppercase tracking-widest">Skill Modules</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {engineerModules.map((m, i) => (
+                  <div key={i} className="bg-white/5 border border-white/5 p-6 rounded-[2.5rem] group hover:border-primary/20 transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 group-hover:text-primary transition-colors">
+                        <span className="material-symbols-outlined text-2xl fill">{m.icon}</span>
                       </div>
-                      <div className="flex items-center justify-between">
-                         <span className="text-primary text-sm font-black font-display tracking-widest">{c.price}</span>
-                         <span className="material-symbols-outlined text-white/20 text-lg">chevron_right</span>
-                      </div>
+                      <span className="text-[8px] font-black text-white/20 uppercase tracking-widest">{m.level}</span>
                     </div>
+                    <h5 className="text-white text-xs font-black mb-1 font-display">{m.title}</h5>
+                    <p className="text-white/30 text-[9px] font-bold leading-relaxed">{m.desc}</p>
                   </div>
                 ))}
-             </div>
-          )}
-        </div>
+              </div>
+            </div>
+
+            {/* 学习路径与硬件要求 */}
+            <div className="grid grid-cols-1 gap-6">
+               <div className="bg-[#11294d]/40 rounded-[2.5rem] border border-white/5 p-8">
+                  <h4 className="text-white text-xs font-black mb-8 font-display tracking-widest uppercase">进阶路径</h4>
+                  <div className="space-y-8 relative">
+                    <div className="absolute left-[13px] top-1 bottom-1 w-px bg-white/5"></div>
+                    {[
+                      { step: '01', title: '数字音频基础', desc: '掌握信号处理与采样率', done: true },
+                      { step: '02', title: 'Python 音乐编程', desc: 'MIDI生成与流处理', done: false },
+                      { step: '03', title: '深度学习模型', desc: '扩散模型与音色克隆', done: false }
+                    ].map((step, i) => (
+                      <div key={i} className="flex gap-6 items-start relative">
+                        <div className={`size-7 rounded-full border z-10 flex items-center justify-center transition-all ${step.done ? 'bg-primary border-primary text-background-dark shadow-lg' : 'bg-background-dark border-white/10 text-white/20'}`}>
+                          {step.done ? <span className="material-symbols-outlined text-sm font-black">check</span> : <span className="text-[10px] font-black italic">{step.step}</span>}
+                        </div>
+                        <div>
+                           <h6 className={`text-xs font-black mb-1 ${step.done ? 'text-white' : 'text-white/30'}`}>{step.title}</h6>
+                           <p className="text-[9px] text-white/20 font-bold uppercase tracking-widest">{step.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+               </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

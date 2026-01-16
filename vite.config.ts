@@ -7,7 +7,7 @@ export default defineConfig({
   base: './', // 确保在各种托管环境下路径正确
   build: {
     outDir: 'dist',
-    minify: 'esbuild',
+    minify: 'terser',
     sourcemap: false,
     rollupOptions: {
       output: {
