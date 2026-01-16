@@ -11,15 +11,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
     <div className="flex flex-col min-h-full pb-28 bg-[#0B1E3B] font-sans">
       {/* 顶部导航 */}
       <header className="sticky top-0 z-30 px-6 py-5 flex items-center justify-between glass border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="size-10 rounded-xl bg-gradient-to-br from-primary to-primary-dark p-[1.5px] shadow-lg shadow-primary/20">
-            <div className="w-full h-full rounded-[9px] bg-[#0B1E3B] flex items-center justify-center overflow-hidden">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgn7oVibDI4dCxRYx2TjfMDCT1vX1RGkq1LAsPPd6D9pB3KpCAspieGpK9J6su1algSVnBplH5N0eCHJYDHyzflTCJI2ZRg0mUpFuOH1ykhkYrpE_ZtYRM9TIzd2_bZ9XLBKzRPDXRolAnrjQMvcn9S-EJ1G9Djg1Gz6Pss3-xVV5M-pXJuQbhpDkjY28-nF4A-IazzswMod6P_VkbidJhfLppKHI0bYHtOdS6j57ksIF23d_arsTnppA1EOuhi9FMwqtL7U8aCbjC" className="w-full h-full object-cover opacity-90" alt="Logo" />
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-white text-sm font-black tracking-tight leading-none mb-1">咪咕音乐 × 中国音乐学院</h1>
-            <p className="text-[8px] text-primary/60 font-black uppercase tracking-[0.25em]">Smart Music Campus</p>
+        <div className="flex flex-col">
+          <h1 className="text-white text-2xl font-black italic tracking-tighter leading-none mb-1 font-display">
+            ME<span className="text-primary not-italic ml-0.5">学院</span>
+          </h1>
+          <div className="flex items-center gap-1.5">
+            <p className="text-[9px] text-white/40 font-bold tracking-wider">咪咕音乐 × 中国音乐学院 联合出品</p>
           </div>
         </div>
         <div className="flex items-center gap-5">
