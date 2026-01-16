@@ -12,6 +12,7 @@ import AIRefine from './pages/AIRefine';
 import AIStudio from './pages/AIStudio';
 import CourseCenter from './pages/CourseCenter';
 import OfflineStage from './pages/OfflineStage';
+import MyPerformances from './pages/MyPerformances';
 import BottomNav from './components/BottomNav';
 
 const App: React.FC = () => {
@@ -30,6 +31,7 @@ const App: React.FC = () => {
       case Page.AIStudio: return <AIStudio onNavigate={setCurrentPage} />;
       case Page.CourseCenter: return <CourseCenter onNavigate={setCurrentPage} />;
       case Page.OfflineStage: return <OfflineStage onNavigate={setCurrentPage} />;
+      case Page.MyPerformances: return <MyPerformances onNavigate={setCurrentPage} />;
       default: return <Home onNavigate={setCurrentPage} />;
     }
   };

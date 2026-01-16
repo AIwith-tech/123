@@ -32,7 +32,7 @@ const Payment: React.FC<PaymentProps> = ({ onNavigate }) => {
           </div>
           <h2 className="text-white text-2xl font-bold mb-2">支付成功</h2>
           <p className="text-white/60 text-sm mb-12">
-            您已成功报名 2024 春季全国音乐考级<br/>
+            您已成功报名 2026 春季全国音乐考级<br/>
             具体考试时间请关注站内信通知
           </p>
           

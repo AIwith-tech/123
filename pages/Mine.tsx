@@ -11,7 +11,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
-      {/* 顶部标题栏 - 与学习中心样式保持一致 */}
+      {/* 顶部标题栏 */}
       <header className="px-6 pt-8 pb-4 flex items-center justify-between">
         <div>
           <h1 className="text-white text-2xl font-black font-display tracking-tight">个人中心</h1>
@@ -79,7 +79,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
              </div>
              <div>
                 <h4 className="text-white text-sm font-black font-display">视频彩铃发行</h4>
-                <p className="text-white/30 text-[10px] font-bold tracking-tight">由中国音乐学院认证，让您的演奏成为他人的专属来电风景</p>
+                <p className="text-white/30 text-[10px] font-bold tracking-tight">让演奏成为他人的来电风景</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto">chevron_right</span>
           </div>
@@ -89,7 +89,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
              </div>
              <div>
                 <h4 className="text-white text-sm font-black font-display">咪咕音乐发行</h4>
-                <p className="text-white/30 text-[10px] font-bold tracking-tight">打通全球数字流媒体渠道，开启职业音乐人第一步</p>
+                <p className="text-white/30 text-[10px] font-bold tracking-tight">开启全球数字流媒体发行</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto">chevron_right</span>
           </div>
@@ -98,47 +98,65 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
 
       {/* 功能网格 */}
       <section className="px-5 grid grid-cols-2 gap-4">
-        <div onClick={() => onNavigate(Page.Study)} className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all">
-          <div className="size-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
-            <span className="material-symbols-outlined text-2xl fill">school</span>
+        {/* 我的展演 - 跳转至个人展演历史页面 */}
+        <div onClick={() => onNavigate(Page.MyPerformances)} className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all flex flex-col justify-between h-40">
+          <div>
+            <div className="size-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4 shadow-inner">
+              <span className="material-symbols-outlined text-2xl fill">theater_comedy</span>
+            </div>
+            <div className="flex items-center justify-between mb-2">
+              <h4 className="text-white text-sm font-black font-display tracking-tight">我的展演</h4>
+              <span className="material-symbols-outlined text-white/10 text-base">arrow_forward</span>
+            </div>
           </div>
-          <div className="flex items-center justify-between mb-1">
-            <h4 className="text-white text-sm font-black">我的课程</h4>
-            <span className="material-symbols-outlined text-white/10 text-base">arrow_forward</span>
+          <div className="space-y-1.5">
+             <div className="flex justify-between items-center bg-white/5 rounded-lg px-2 py-1">
+               <span className="text-[8px] text-white/30 font-bold uppercase">云端</span>
+               <span className="text-[10px] text-primary font-black">2个在展</span>
+             </div>
+             <div className="flex justify-between items-center bg-white/5 rounded-lg px-2 py-1">
+               <span className="text-[8px] text-white/30 font-bold uppercase">线下</span>
+               <span className="text-[10px] text-white/60 font-black">1个进行中</span>
+             </div>
           </div>
-          <p className="text-[10px] text-white/30 font-medium">3门正在学习</p>
         </div>
 
-        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all relative overflow-hidden">
-          <div className="size-10 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4">
-            <span className="material-symbols-outlined text-2xl fill">folder_managed</span>
-          </div>
-          <div className="flex items-center justify-between mb-1">
-            <h4 className="text-white text-sm font-black">作品管理</h4>
+        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all relative overflow-hidden flex flex-col justify-between h-40">
+          <div>
+            <div className="size-10 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4">
+              <span className="material-symbols-outlined text-2xl fill">folder_managed</span>
+            </div>
+            <div className="flex items-center justify-between mb-1">
+              <h4 className="text-white text-sm font-black">作品管理</h4>
+            </div>
           </div>
           <p className="text-[10px] text-white/30 font-medium">12个作品 | 1待发布</p>
         </div>
 
-        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all">
-          <div className="size-10 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 mb-4">
-            <span className="material-symbols-outlined text-2xl fill">shopping_bag</span>
-          </div>
-          <div className="flex items-center justify-between mb-1">
-            <h4 className="text-white text-sm font-black">我的订单</h4>
-            <span className="material-symbols-outlined text-white/10 text-base">arrow_forward</span>
+        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 active:bg-[#1A3A6B] transition-all flex flex-col justify-between h-32">
+          <div>
+            <div className="size-10 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 mb-4">
+              <span className="material-symbols-outlined text-2xl fill">shopping_bag</span>
+            </div>
+            <div className="flex items-center justify-between mb-1">
+              <h4 className="text-white text-sm font-black">我的订单</h4>
+              <span className="material-symbols-outlined text-white/10 text-base">arrow_forward</span>
+            </div>
           </div>
           <p className="text-[10px] text-white/30 font-medium">考级/课程/教材</p>
         </div>
 
-        {/* AI精修作品 - 展示区域，不再跳转 */}
-        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 relative overflow-hidden">
-          <div className="size-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
-            <span className="material-symbols-outlined text-2xl fill">auto_fix_high</span>
+        {/* AI精修作品 - 展示区域 */}
+        <div className="bg-[#152B4D]/60 rounded-3xl border border-white/5 p-5 relative overflow-hidden flex flex-col justify-between h-32">
+          <div>
+            <div className="size-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+              <span className="material-symbols-outlined text-2xl fill">auto_fix_high</span>
+            </div>
+            <div className="flex items-center justify-between mb-1">
+              <h4 className="text-white text-sm font-black tracking-tight">AI精修作品</h4>
+            </div>
           </div>
-          <div className="flex items-center justify-between mb-1">
-            <h4 className="text-white text-sm font-black">AI精修作品</h4>
-          </div>
-          <p className="text-[10px] text-white/30 font-medium">已完成 5 件精修作品</p>
+          <p className="text-[10px] text-white/30 font-medium">已完成 5 件精修</p>
         </div>
       </section>
 

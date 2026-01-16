@@ -11,9 +11,9 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
   const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
 
   const events: PerformanceEvent[] = [
-    { id: '1', title: '2024 中国音乐学院春季优秀作品展演', date: '2024.04.15 - 04.20', location: '北京 · 国音音乐厅', status: 'ongoing', image: imageUrl },
-    { id: '2', title: '全国青少年钢琴大奖赛（上海站）', date: '2024.06.10', location: '上海 · 东方艺术中心', status: 'upcoming', image: imageUrl },
-    { id: '3', title: '2023 冬季民乐盛典回顾展', date: '2023.12.01', location: '广州 · 星海音乐厅', status: 'ended', image: imageUrl },
+    { id: '1', title: '2026 中国音乐学院春季优秀作品展演', date: '2026.04.15 - 04.20', location: '北京 · 国音音乐厅', status: 'ongoing', image: imageUrl },
+    { id: '2', title: '全国青少年钢琴大奖赛（上海站）', date: '2026.06.10', location: '上海 · 东方艺术中心', status: 'upcoming', image: imageUrl },
+    { id: '3', title: '2025 冬季民乐盛典回顾展', date: '2025.12.01', location: '广州 · 星海音乐厅', status: 'ended', image: imageUrl },
   ];
 
   const filteredEvents = events.filter(e => e.status === filter);

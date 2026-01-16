@@ -38,7 +38,7 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] flex justify-between items-center pointer-events-none">
         <div className="bg-black/30 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full pointer-events-auto flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-lg fill">campaign</span>
-          <span className="text-white/90 text-[11px] font-bold">投稿赢百万流量</span>
+          <span className="text-white/90 text-[11px] font-bold">投稿上首页，赢百万流量</span>
           <span className="material-symbols-outlined text-white/40 text-sm">chevron_right</span>
         </div>
         <button className="size-10 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white pointer-events-auto active:scale-90 transition-all">

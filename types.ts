@@ -2,7 +2,7 @@
 export enum Page {
   Home = 'home',
   Study = 'study',
-  Stage = 'stage', // This remains Video Ringtone for Bottom Nav
+  Stage = 'stage',
   Mine = 'mine',
   CourseDetail = 'course_detail',
   Registration = 'registration',
@@ -10,7 +10,8 @@ export enum Page {
   AIRefine = 'ai_refine',
   AIStudio = 'ai_studio',
   CourseCenter = 'course_center',
-  OfflineStage = 'offline_stage'
+  OfflineStage = 'offline_stage',
+  MyPerformances = 'my_performances'
 }
 
 export interface Course {
