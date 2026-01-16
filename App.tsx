@@ -39,7 +39,8 @@ const App: React.FC = () => {
   const showBottomNav = [Page.Home, Page.Study, Page.Stage, Page.Mine].includes(currentPage);
 
   return (
-    <div className="relative w-full h-screen max-w-md mx-auto bg-background-dark overflow-hidden flex flex-col shadow-2xl">
+    /* 使用 dvh (dynamic viewport height) 替代 screen (vh)，解决移动端地址栏遮挡问题 */
+    <div className="relative w-full h-[100dvh] bg-background-dark overflow-hidden flex flex-col">
       <div className="flex-1 overflow-y-auto no-scrollbar relative">
         {renderPage()}
       </div>

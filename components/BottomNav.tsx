@@ -16,7 +16,11 @@ const BottomNav: React.FC<BottomNavProps> = ({ current, onNavigate }) => {
   ];
 
   return (
-    <nav className="glass border-t border-white/5 pb-8 pt-3 px-6 flex justify-between items-center z-50 fixed bottom-0 left-0 right-0 max-w-md mx-auto">
+    /* 添加 safe-area-inset-bottom 的内边距，确保在 iPhone 等手机底部手势条上方显示 */
+    <nav 
+      className="glass border-t border-white/5 pt-3 px-6 flex justify-between items-center z-50 fixed bottom-0 left-0 right-0 w-full"
+      style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 0.75rem)' }}
+    >
       {items.map((item) => (
         <button
           key={item.key}
