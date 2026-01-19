@@ -11,7 +11,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ current, onNavigate }) => {
   const items = [
     { key: Page.Home, label: '首页', icon: 'home' },
     { key: Page.Study, label: '课程中心', icon: 'menu_book' },
-    { key: Page.Stage, label: '视频彩铃', icon: 'stadium' },
+    { key: Page.Stage, label: '咪咕专区', icon: 'stadium' },
     { key: Page.Mine, label: '我的', icon: 'person' },
   ];
 
