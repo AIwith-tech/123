@@ -10,7 +10,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ onNavigate }) => {
   const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
   
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] pb-20 font-sans">
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] pb-6 font-sans">
       {/* 视频播放区 */}
       <div className="aspect-video w-full relative bg-black shadow-2xl">
         <img 
@@ -94,21 +94,6 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ onNavigate }) => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* 底部学习工具栏 */}
-      <div className="fixed bottom-0 left-0 right-0 p-5 glass border-t border-white/10 z-50 flex gap-4">
-        <button className="flex-1 bg-white/5 py-4 rounded-2xl text-white/60 font-black text-[11px] tracking-[0.2em] border border-white/10 active:bg-white/10 flex flex-col items-center gap-1">
-          <span className="material-symbols-outlined text-xl">download</span>
-          离线缓存
-        </button>
-        <button 
-          onClick={() => onNavigate(Page.AIRefine)}
-          className="flex-[2] bg-primary py-4 rounded-2xl text-background-dark font-black text-sm tracking-widest italic active:scale-[0.98] transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3"
-        >
-          <span className="material-symbols-outlined fill">science</span>
-          开启智慧陪练
-        </button>
       </div>
     </div>
   );

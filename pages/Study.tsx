@@ -33,21 +33,23 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
   const vipCourses = [
     {
       id: 'v1',
-      title: '智能音乐工程师',
+      title: 'AI 音乐工程师',
       org: '中国音乐学院认证课程',
       progress: 65,
       expiry: '2024.12.31',
       icon: 'memory',
-      gradient: 'from-[#2e1c5e] to-[#121b44]'
+      gradient: 'from-[#2e1c5e] to-[#121b44]',
+      isSubscribed: true
     },
     {
       id: 'v2',
-      title: '数字音频处理',
-      org: '混音与母带处理实战',
-      progress: 12,
+      title: '生成式人工智能（AIGC）应用工程师',
+      org: '中国移动元宇宙数智赋能中心',
+      progress: 0,
       expiry: '2024.12.31',
-      icon: 'equalizer',
-      gradient: 'from-[#1e2a5e] to-[#0f1430]'
+      icon: 'psychology',
+      gradient: 'from-[#1e2a5e] to-[#0f1430]',
+      isSubscribed: false
     }
   ];
 
@@ -124,34 +126,54 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="mb-6">
-        <div className="px-6 flex justify-between items-center mb-4">
+      <section className="mb-6 px-6">
+        <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-2">
             <div className="w-1 h-4 bg-[#8b5cf6] rounded-full shadow-[0_0_5px_#8b5cf6]"></div>
             <h3 className="text-white text-base font-black font-display tracking-tight italic">会员专享</h3>
           </div>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto px-6 no-scrollbar snap-x">
+        {/* 更改为纵向排列布局 */}
+        <div className="space-y-4">
           {vipCourses.map((course) => (
             <div 
               key={course.id}
-              className={`min-w-[280px] snap-center bg-gradient-to-br ${course.gradient} rounded-2xl p-5 border border-white/10 shadow-lg relative overflow-hidden group`}
+              onClick={() => course.isSubscribed && onNavigate(Page.CourseDetail)}
+              className={`relative bg-gradient-to-br ${course.gradient} rounded-2xl p-5 border shadow-lg overflow-hidden active:scale-[0.98] transition-all ${
+                course.isSubscribed 
+                  ? 'border-white/10 opacity-100' 
+                  : 'border-white/5 grayscale opacity-60 pointer-events-none'
+              }`}
             >
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="size-10 rounded-xl bg-black/20 flex items-center justify-center text-[#8b5cf6] border border-white/5">
                     <span className="material-symbols-outlined text-xl fill">{course.icon}</span>
                   </div>
-                  <div>
-                    <h4 className="text-white text-base font-black font-display tracking-tight leading-none mb-1">{course.title}</h4>
+                  <div className="flex-1">
+                    <h4 className="text-white text-base font-black font-display tracking-tight leading-tight mb-1">{course.title}</h4>
                     <p className="text-[#8b5cf6] text-[9px] font-bold">{course.org}</p>
                   </div>
                 </div>
-                <div className="w-full h-1 bg-black/20 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#8b5cf6] to-primary rounded-full shadow-[0_0_8px_rgba(139,92,246,0.3)]" style={{ width: `${course.progress}%` }}></div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="w-2/3 h-1 bg-black/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-[#8b5cf6] to-primary rounded-full" style={{ width: `${course.progress}%` }}></div>
+                  </div>
+                  {!course.isSubscribed && (
+                    <span className="bg-black/40 text-white/60 text-[8px] px-2 py-0.5 rounded border border-white/5 font-black uppercase tracking-widest">
+                      未开通服务
+                    </span>
+                  )}
+                  {course.isSubscribed && (
+                     <span className="text-white/40 text-[9px] font-bold">已学习 {course.progress}%</span>
+                  )}
                 </div>
               </div>
+              
+              {/* 背景装饰 */}
+              <div className="absolute top-0 right-0 size-24 bg-white/5 blur-3xl -mr-12 -mt-12 rounded-full"></div>
             </div>
           ))}
         </div>
