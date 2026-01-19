@@ -17,16 +17,13 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-24">
-      {/* 顶部标题栏 */}
-      <header className="sticky top-0 z-50 glass px-6 py-6 flex items-center gap-4">
-        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60">arrow_back_ios</button>
-        <div>
-          <h1 className="text-white text-xl font-black font-display tracking-tight italic">展演舞台报名</h1>
-          <p className="text-[8px] text-primary/60 font-bold uppercase tracking-[0.2em]">Live Performance Portal</p>
-        </div>
+      {/* 统一的标题栏设计 */}
+      <header className="sticky top-0 z-50 glass px-6 py-4 flex items-center gap-4 border-b border-white/5">
+        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-white transition-colors">arrow_back_ios</button>
+        <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">展演舞台</h1>
       </header>
 
-      {/* 状态快捷导航 - 更加轻量化 */}
+      {/* 状态快捷导航 */}
       <div className="flex px-6 py-4 gap-3 overflow-x-auto no-scrollbar">
         {['进行中', '即将开放', '精彩回顾'].map((label, i) => (
           <button 
@@ -41,7 +38,7 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
       </div>
 
       <main className="px-5 space-y-10 mt-2">
-        {/* 正在进行的项目 - 极致参考图还原 */}
+        {/* 正在进行的项目 */}
         <section>
           <div className="relative bg-[#11294d]/40 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 group">
             {/* 封面图容器 */}
@@ -51,7 +48,7 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
               
               {/* 图片上的活跃标签 */}
               <div className="absolute top-6 right-6 bg-[#E13232] text-white text-[9px] font-black px-4 py-1.5 rounded-full shadow-2xl animate-pulse tracking-widest uppercase italic border border-white/20">
-                 Registration Active
+                 报名开启中
               </div>
             </div>
 
@@ -84,14 +81,14 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* 精彩回顾展示区 - 作品展示逻辑 */}
+        {/* 精彩回顾展示区 */}
         <section className="space-y-6 pb-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-1 h-5 bg-primary rounded-full"></div>
               <h3 className="text-white text-lg font-black font-display tracking-tight">往届精彩回顾</h3>
             </div>
-            <button className="text-white/30 text-[10px] font-bold tracking-widest uppercase flex items-center">
+            <button className="text-white/30 text-[10px] font-bold tracking-widest flex items-center">
               查看全部 <span className="material-symbols-outlined text-sm">chevron_right</span>
             </button>
           </div>
@@ -117,7 +114,6 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
               </div>
             ))}
             
-            {/* 更多回顾占位 */}
             <div className="min-w-[140px] aspect-[3/4] rounded-[2rem] border border-white/5 bg-white/5 flex flex-col items-center justify-center gap-2 snap-center">
                <span className="material-symbols-outlined text-white/10 text-3xl">auto_awesome_motion</span>
                <span className="text-white/20 text-[9px] font-bold tracking-widest uppercase">更多记录</span>
@@ -125,13 +121,6 @@ const OfflineStage: React.FC<OfflineStageProps> = ({ onNavigate }) => {
           </div>
         </section>
       </main>
-
-      {/* 底部浮动引导 - 仅在滑动到下方时可见（可选交互增强） */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-max pointer-events-none">
-        <p className="bg-black/60 backdrop-blur-xl border border-white/10 px-6 py-2 rounded-full text-white/40 text-[9px] font-bold tracking-widest uppercase shadow-2xl">
-          展示自我 · 站上属于你的舞台
-        </p>
-      </div>
     </div>
   );
 };

@@ -9,15 +9,9 @@ interface AIStudioProps {
 const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans">
-      <header className="sticky top-0 z-20 glass px-6 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-primary transition-colors">arrow_back_ios</button>
-          <div>
-            <h1 className="text-white text-base font-black font-display tracking-tight">AI工作室</h1>
-            <p className="text-[8px] text-primary/60 font-bold tracking-[0.3em] uppercase">Intelligence Music Lab</p>
-          </div>
-        </div>
-        <span className="material-symbols-outlined text-primary/40 animate-pulse">settings_input_component</span>
+      <header className="sticky top-0 z-20 glass px-6 py-4 flex items-center gap-4 border-b border-white/5">
+        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-white transition-colors">arrow_back_ios</button>
+        <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">AI实验室</h1>
       </header>
 
       <main className="p-6 space-y-8">
@@ -29,7 +23,6 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
                 <span className="material-symbols-outlined text-4xl font-black fill">auto_fix_high</span>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-primary/60 font-black tracking-widest uppercase">SINGLE SERVICE</span>
                 <p className="text-white text-2xl font-black font-display mt-1 tracking-tight">AI歌曲精修</p>
               </div>
             </div>
@@ -62,7 +55,6 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
                 <span className="material-symbols-outlined text-4xl font-black fill">pace</span>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-primary/60 font-black tracking-widest uppercase">SUBSCRIPTION</span>
                 <p className="text-white text-2xl font-black font-display mt-1 tracking-tight">AI 智慧陪练</p>
               </div>
             </div>
@@ -70,8 +62,8 @@ const AIStudio: React.FC<AIStudioProps> = ({ onNavigate }) => {
             <div className="grid grid-cols-3 gap-3 mb-8">
               {[
                 { label: '实时纠错', value: '99%' },
-                { label: '智能测评', value: '24h' },
-                { label: '反馈时延', value: '0.1s' }
+                { label: '智能测评', value: '24小时' },
+                { label: '反馈时延', value: '0.1秒' }
               ].map((item, i) => (
                 <div key={i} className="bg-white/5 border border-white/5 p-3 rounded-2xl text-center">
                   <span className="block text-primary text-sm font-black mb-0.5">{item.value}</span>

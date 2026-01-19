@@ -9,9 +9,10 @@ interface RegistrationProps {
 const Registration: React.FC<RegistrationProps> = ({ onNavigate }) => {
   return (
     <div className="flex flex-col min-h-full">
-      <header className="sticky top-0 z-20 glass px-4 py-3 flex items-center gap-3">
-        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/80">arrow_back</button>
-        <h1 className="text-white text-base font-bold">在线考级报名</h1>
+      {/* 统一的标题栏设计 */}
+      <header className="sticky top-0 z-50 glass px-6 py-4 flex items-center gap-4 border-b border-white/5">
+        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-white transition-colors">arrow_back_ios</button>
+        <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">考级报名</h1>
       </header>
 
       <div className="p-4 space-y-6 pb-24">

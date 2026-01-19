@@ -69,11 +69,10 @@ const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans overflow-hidden">
-      {/* 顶部导航 */}
-      <header className="sticky top-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/5">
-        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white text-2xl">arrow_back_ios</button>
-        <h1 className="text-white text-lg font-bold tracking-tight">课程中心</h1>
-        <button className="material-symbols-outlined text-white text-2xl">more_horiz</button>
+      {/* 统一的标题栏设计 */}
+      <header className="sticky top-0 z-50 glass px-6 py-4 flex items-center gap-4 border-b border-white/5">
+        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60 hover:text-white transition-colors">arrow_back_ios</button>
+        <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">课程中心</h1>
       </header>
 
       {/* 顶部切换 Tab */}
@@ -99,7 +98,8 @@ const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
       <main className="px-6 pb-20 flex-1 overflow-y-auto no-scrollbar">
         {activeTab === 'buyout' ? (
           <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="flex items-center justify-between mb-6 mt-2">
+            {/* 增加 mt-10 确保不被吸顶 Tab 挡住 */}
+            <div className="flex items-center justify-between mb-6 mt-10">
               <div className="flex flex-col gap-0.5">
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[#00c2ff] text-xl fill">auto_awesome</span>
@@ -149,7 +149,7 @@ const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
             </div>
           </div>
         ) : (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pt-2 space-y-6">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pt-10 space-y-6">
             {/* 会员专享卡片列表 */}
             {certifications.map((cert) => (
               <div 
@@ -191,7 +191,6 @@ const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
                   {/* 底部购买区 */}
                   <div className="flex items-center justify-between">
                     <div className="flex flex-col">
-                      <span className="text-white/30 text-[9px] font-bold uppercase tracking-wider">MONTHLY FEE</span>
                       <span className="text-white text-xl font-black font-display italic leading-none">¥ 29.0 <span className="text-[10px] font-normal not-italic opacity-40">/ 月</span></span>
                     </div>
                     <button className="bg-[#f2b90d] text-[#3d2c04] px-6 py-2.5 rounded-xl font-black text-[11px] tracking-widest italic shadow-lg flex items-center gap-1.5 active:scale-95 transition-all">
@@ -207,7 +206,7 @@ const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
             <div className="pt-4 text-center">
               <p className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase leading-relaxed px-8">
                 双认证体系 · 助力职业进阶<br/>
-                咪咕音乐与中国移动元宇宙数智赋能中心联合打造
+                咪咕音乐与中国音乐学院联合打造
               </p>
             </div>
           </div>

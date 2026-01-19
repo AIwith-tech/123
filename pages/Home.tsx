@@ -59,6 +59,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onClick={() => onNavigate(Page.AIStudio)}
           className="relative aspect-square bg-gradient-to-br from-[#1A3A6B] to-[#11294d] rounded-[2rem] border border-cyan-500/30 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.15)]"
         >
+          {/* 扫描动画层 */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[2rem]">
+            <div className="w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent absolute left-0 animate-scan shadow-[0_0_15px_#22d3ee]"></div>
+          </div>
+
           {/* 恢复底纹背景图标 */}
           <div className="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
              <span className="material-symbols-outlined text-9xl font-light rotate-12 text-cyan-400">psychology</span>
