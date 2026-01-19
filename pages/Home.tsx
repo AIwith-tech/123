@@ -75,7 +75,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* 课程中心 */}
+        {/* 课程商城 */}
         <div 
           onClick={() => onNavigate(Page.CourseCenter)}
           className="relative aspect-[1.7/1] bg-[#152B4D]/60 rounded-2xl border border-white/5 p-4 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden"
@@ -87,7 +87,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <span className="material-symbols-outlined text-xl fill">auto_stories</span>
           </div>
           <div className="relative z-10">
-            <h4 className="text-white text-base font-black font-display tracking-tight">课程中心</h4>
+            <h4 className="text-white text-base font-black font-display tracking-tight">课程商城</h4>
             <p className="text-white/30 text-[10px] font-bold italic">专业体系课程</p>
           </div>
         </div>
