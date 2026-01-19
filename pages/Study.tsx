@@ -33,7 +33,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
   const vipCourses = [
     {
       id: 'v1',
-      title: 'AI音乐工程师',
+      title: '智能音乐工程师',
       org: '中国音乐学院认证课程',
       progress: 65,
       expiry: '2024.12.31',
@@ -53,19 +53,16 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-24">
-      {/* 顶部统一标题栏 */}
-      <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-5 flex items-center justify-between">
+      <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex flex-col">
-          <h1 className="text-white text-xl font-black font-display tracking-tight italic">课程中心</h1>
-          <p className="text-[9px] text-primary/60 font-black uppercase tracking-[0.3em]">Course Center</p>
+          <h1 className="text-white text-2xl font-black font-display tracking-tighter italic">课程中心</h1>
         </div>
-        <div className="flex items-center gap-5">
-          <span className="material-symbols-outlined text-white/40 text-2xl">search</span>
-          <span className="material-symbols-outlined text-white/40 text-2xl">history</span>
+        <div className="flex items-center gap-6">
+          <span className="material-symbols-outlined text-white/40 text-[26px]">search</span>
+          <span className="material-symbols-outlined text-white/40 text-[26px]">history</span>
         </div>
       </header>
 
-      {/* 顶部学习数据概览 */}
       <section className="px-5 pt-6 mb-8">
         <div className="bg-[#111928]/80 backdrop-blur-xl border border-white/5 rounded-[2.5rem] p-6 flex items-center justify-between shadow-2xl">
           <div className="flex items-center gap-4">
@@ -73,14 +70,14 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
               <span className="material-symbols-outlined fill">bar_chart</span>
             </div>
             <div>
-              <p className="text-white/30 text-[10px] font-bold tracking-widest uppercase">今日学习时长</p>
+              <p className="text-white/30 text-[10px] font-bold tracking-widest">今日学习时长</p>
               <p className="text-white text-2xl font-black font-display italic leading-none mt-0.5">45 <span className="text-sm not-italic opacity-60">分钟</span></p>
             </div>
           </div>
           <div className="w-px h-10 bg-white/5"></div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-white/30 text-[10px] font-bold tracking-widest uppercase">连续打卡</p>
+              <p className="text-white/30 text-[10px] font-bold tracking-widest">连续打卡</p>
               <p className="text-white text-2xl font-black font-display italic leading-none mt-0.5">12 <span className="text-sm not-italic opacity-60">天</span></p>
             </div>
             <div className="size-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 border border-orange-500/20">
@@ -90,11 +87,9 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 第一行：已购课程 */}
       <section className="mb-10">
         <div className="px-6 flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            {/* 蓝色发光竖条 (参考图1) */}
             <div className="w-1 h-5 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff] shrink-0"></div>
             <h3 className="text-white text-lg font-black font-display tracking-tight italic">已购课程</h3>
           </div>
@@ -114,7 +109,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
                 <img src={course.img} className="w-full h-full object-cover" alt="" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111928] via-transparent to-transparent"></div>
                 <div className="absolute -bottom-4 right-6 size-12 rounded-2xl bg-[#1a2c42]/80 backdrop-blur-xl border border-white/10 flex items-center justify-center text-cyan-400 shadow-xl group-hover:bg-cyan-500 group-hover:text-background-dark transition-all duration-500">
-                   <span className="material-symbols-outlined fill text-2xl">{course.icon === 'piano' ? 'piano' : 'violin'}</span>
+                   <span className="material-symbols-outlined fill text-2xl">{course.icon}</span>
                 </div>
               </div>
 
@@ -139,16 +134,14 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 第二行：会员专享 */}
       <section className="mb-12">
         <div className="px-6 flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            {/* 紫色发光竖条 (参考图2) */}
             <div className="w-1 h-5 bg-[#8b5cf6] rounded-full shadow-[0_0_8px_#8b5cf6] shrink-0"></div>
             <h3 className="text-white text-xl font-black font-display tracking-tight italic">会员专享</h3>
           </div>
           <div className="bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 px-3 py-1 rounded-lg text-[#c4b5fd] text-[9px] font-black tracking-widest italic">
-            SVIP 会员生效中
+            高级会员生效中
           </div>
         </div>
 
@@ -177,7 +170,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="flex justify-between items-end mb-3">
-                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest">学习进度</span>
+                  <span className="text-white/40 text-[10px] font-bold tracking-widest">学习进度</span>
                   <span className="text-[#f2b90d] text-xl font-black font-display italic leading-none">{course.progress}%</span>
                 </div>
 
@@ -188,7 +181,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
                   ></div>
                 </div>
 
-                <p className="text-white/20 text-[9px] font-bold uppercase tracking-widest text-right">有效期至 {course.expiry}</p>
+                <p className="text-white/20 text-[9px] font-bold tracking-widest text-right">有效期至 {course.expiry}</p>
               </div>
             </div>
           ))}
