@@ -1,199 +1,195 @@
 
 import React from 'react';
-import { Page, Course } from '../types';
+import { Page } from '../types';
 
 interface StudyProps {
   onNavigate: (page: Page) => void;
 }
 
 const Study: React.FC<StudyProps> = ({ onNavigate }) => {
-  const certificates = [
-    { id: 1, title: '声乐等级证书', level: 'LEVEL 5 VOCAL CERTIFICATE', date: '2025.08.15', icon: 'school' },
-    { id: 2, title: '钢琴演奏证书', level: 'LEVEL 4 PIANO PERFORMANCE', date: '2024.12.20', icon: 'piano' }
+  const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
+
+  const buyoutCourses = [
+    {
+      id: 'b1',
+      title: '大师钢琴课 - 贝多芬专场',
+      subtitle: '永久有效 · 共30课时',
+      progress: 35,
+      lastLesson: '第12课',
+      icon: 'piano',
+      img: imageUrl
+    },
+    {
+      id: 'b2',
+      title: '小提琴独奏进阶班',
+      subtitle: '永久有效 · 共24课时',
+      progress: 8,
+      lastLesson: '第2课',
+      icon: 'violin',
+      img: imageUrl
+    }
   ];
 
-  // 模拟已购买且正在学习的课程数据
-  const purchasedCourses = [
-    { 
-      id: 'course_1', 
-      title: '钢琴考级精讲：乐理与演奏一级', 
-      currentLesson: '第4课：手型与指法基础', 
-      progress: 75, 
-      icon: 'piano',
-      color: 'text-primary'
-    },
-    { 
-      id: 'course_2', 
-      title: 'AI 交互作曲：大模型旋律生成实战', 
-      currentLesson: '第2课：Transformer模型基础', 
-      progress: 20, 
+  const vipCourses = [
+    {
+      id: 'v1',
+      title: 'AI音乐工程师',
+      org: '中国音乐学院认证课程',
+      progress: 65,
+      expiry: '2024.12.31',
       icon: 'memory',
-      color: 'text-blue-400'
+      gradient: 'from-[#2e1c5e] to-[#121b44]'
     },
-    { 
-      id: 'course_3', 
-      title: '大咖课：古琴艺术指法深度解析', 
-      currentLesson: '第8课：流水韵律处理', 
-      progress: 45, 
-      icon: 'history_edu',
-      color: 'text-amber-400'
+    {
+      id: 'v2',
+      title: '数字音频处理',
+      org: '混音与母带处理实战',
+      progress: 12,
+      expiry: '2024.12.31',
+      icon: 'equalizer',
+      gradient: 'from-[#1e2a5e] to-[#0f1430]'
     }
   ];
 
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
-      {/* 顶部标题与学情概览 */}
-      <header className="px-6 pt-8 pb-4">
-        <div className="flex justify-between items-end mb-6">
-          <div>
-            <h1 className="text-white text-2xl font-black font-display tracking-tight">学习中心</h1>
-            <p className="text-[10px] text-primary/60 font-bold uppercase tracking-[0.3em]">Learning Center</p>
-          </div>
-          <div className="bg-white/5 px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-white/60 text-[10px] font-bold tracking-tight">学习中 42min</span>
-          </div>
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-24">
+      {/* 顶部统一标题栏 */}
+      <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-5 flex items-center justify-between">
+        <div className="flex flex-col">
+          <h1 className="text-white text-xl font-black font-display tracking-tight italic">课程中心</h1>
+          <p className="text-[9px] text-primary/60 font-black uppercase tracking-[0.3em]">Course Center</p>
+        </div>
+        <div className="flex items-center gap-5">
+          <span className="material-symbols-outlined text-white/40 text-2xl">search</span>
+          <span className="material-symbols-outlined text-white/40 text-2xl">history</span>
         </div>
       </header>
 
-      {/* 我的证书 - 横向滚动 */}
-      <section className="mb-8">
-        <div className="px-6 flex justify-between items-center mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-1 h-5 bg-primary rounded-full"></div>
-            <h3 className="text-white text-lg font-black font-display tracking-tight">我的证书</h3>
+      {/* 顶部学习数据概览 */}
+      <section className="px-5 pt-6 mb-8">
+        <div className="bg-[#111928]/80 backdrop-blur-xl border border-white/5 rounded-[2.5rem] p-6 flex items-center justify-between shadow-2xl">
+          <div className="flex items-center gap-4">
+            <div className="size-12 rounded-full bg-[#1a2c42] flex items-center justify-center text-cyan-400 border border-cyan-400/20">
+              <span className="material-symbols-outlined fill">bar_chart</span>
+            </div>
+            <div>
+              <p className="text-white/30 text-[10px] font-bold tracking-widest uppercase">今日学习时长</p>
+              <p className="text-white text-2xl font-black font-display italic leading-none mt-0.5">45 <span className="text-sm not-italic opacity-60">分钟</span></p>
+            </div>
           </div>
-          <button className="text-white/30 text-[11px] font-bold flex items-center gap-1">
-            查看全部 <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+          <div className="w-px h-10 bg-white/5"></div>
+          <div className="flex items-center gap-4">
+            <div className="text-right">
+              <p className="text-white/30 text-[10px] font-bold tracking-widest uppercase">连续打卡</p>
+              <p className="text-white text-2xl font-black font-display italic leading-none mt-0.5">12 <span className="text-sm not-italic opacity-60">天</span></p>
+            </div>
+            <div className="size-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 border border-orange-500/20">
+              <span className="material-symbols-outlined fill">local_fire_department</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 第一行：已购课程 */}
+      <section className="mb-10">
+        <div className="px-6 flex justify-between items-center mb-6">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-5 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>
+            <h3 className="text-white text-lg font-black font-display tracking-tight italic">已购课程</h3>
+          </div>
+          <button className="text-white/30 text-[11px] font-bold flex items-center gap-1 group">
+            全部已购 <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">chevron_right</span>
           </button>
         </div>
-        <div className="flex gap-4 overflow-x-auto px-6 no-scrollbar snap-x">
-          {certificates.map(cert => (
-            <div key={cert.id} className="min-w-[240px] aspect-[1.6/1] bg-gradient-to-br from-[#1A3A6B] to-[#11294d] rounded-3xl border border-white/10 p-5 relative overflow-hidden snap-center group">
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div className="flex justify-between items-start">
-                  <div className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined fill">{cert.icon}</span>
-                  </div>
-                  <span className="bg-primary/20 text-primary text-[8px] px-2 py-0.5 rounded-full border border-primary/20 font-black tracking-widest uppercase">官方认证</span>
-                </div>
-                <div>
-                  <h4 className="text-white text-base font-black font-display mb-0.5 tracking-tight">{cert.title}</h4>
-                  <p className="text-white/30 text-[8px] font-bold tracking-widest uppercase mb-4">{cert.level}</p>
-                  <div className="flex justify-between items-end">
-                    <div>
-                      <p className="text-white/20 text-[8px] font-bold uppercase tracking-widest">发证日期</p>
-                      <p className="text-white/60 text-[11px] font-black font-display">{cert.date}</p>
-                    </div>
-                    <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-                      <span className="material-symbols-outlined text-primary text-sm fill">verified</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute top-0 right-0 size-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* 正在学习 - 已购课程列表 */}
-      <section className="px-6 mb-8">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-1 h-5 bg-primary rounded-full"></div>
-            <h3 className="text-white text-lg font-black font-display tracking-tight">正在学习</h3>
-          </div>
-          <div className="text-white/30 text-[12px] font-black font-display italic tracking-widest">3</div>
-        </div>
-        <div className="grid grid-cols-1 gap-4">
-          {purchasedCourses.map(course => (
+        <div className="flex gap-5 overflow-x-auto px-6 no-scrollbar snap-x">
+          {buyoutCourses.map((course) => (
             <div 
-              key={course.id} 
+              key={course.id}
               onClick={() => onNavigate(Page.CourseDetail)}
-              className="bg-[#152B4D]/30 border border-[#1A3A6B]/50 rounded-[2rem] p-5 flex items-center gap-4 active:scale-[0.98] transition-all group relative overflow-hidden"
+              className="min-w-[280px] snap-center bg-[#111928] rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl relative group active:scale-[0.98] transition-all"
             >
-              {/* 进度背景条 */}
-              <div 
-                className="absolute bottom-0 left-0 h-1 bg-primary/20 transition-all duration-1000" 
-                style={{ width: `${course.progress}%` }}
-              ></div>
-
-              <div className={`size-14 rounded-2xl bg-[#0B1E3B] flex items-center justify-center ${course.color} border border-white/[0.03] group-hover:bg-primary group-hover:text-background-dark transition-all shrink-0`}>
-                <span className="material-symbols-outlined text-3xl fill">{course.icon}</span>
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <h4 className="text-white text-[14px] font-black font-display tracking-tight truncate mb-0.5">{course.title}</h4>
-                <div className="flex items-center gap-2">
-                  <span className="text-white/40 text-[10px] font-bold truncate">上次学至：{course.currentLesson}</span>
+              <div className="h-44 relative">
+                <img src={course.img} className="w-full h-full object-cover" alt="" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111928] via-transparent to-transparent"></div>
+                <div className="absolute -bottom-4 right-6 size-12 rounded-2xl bg-[#1a2c42]/80 backdrop-blur-xl border border-white/10 flex items-center justify-center text-cyan-400 shadow-xl group-hover:bg-cyan-500 group-hover:text-background-dark transition-all duration-500">
+                   <span className="material-symbols-outlined fill text-2xl">{course.icon === 'piano' ? 'piano' : 'violin'}</span>
                 </div>
               </div>
 
-              <div className="flex flex-col items-end gap-1 shrink-0 ml-2">
-                <span className="text-primary text-[14px] font-black font-display italic">{course.progress}%</span>
-                <span className="text-white/20 text-[8px] font-bold uppercase tracking-tighter">已完成</span>
+              <div className="p-6 pt-8">
+                <h4 className="text-white text-lg font-black font-display tracking-tight mb-1">{course.title}</h4>
+                <p className="text-white/30 text-[10px] font-bold mb-6">{course.subtitle}</p>
+                
+                <div className="flex justify-between items-end mb-2">
+                  <span className="text-white/40 text-[10px] font-bold">已学 {course.progress}%</span>
+                  <span className="text-white/40 text-[10px] font-bold">上次学到：{course.lastLesson}</span>
+                </div>
+                
+                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                   <div 
+                    className="h-full bg-[#00c2ff] rounded-full shadow-[0_0_10px_#00c2ff]" 
+                    style={{ width: `${course.progress}%` }}
+                   ></div>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 近期考级卡片 */}
-      <section className="px-6 mb-8">
-        <div className="flex justify-between items-center mb-4">
+      {/* 第二行：会员专享 */}
+      <section className="mb-12">
+        <div className="px-6 flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            <div className="w-1 h-5 bg-primary rounded-full"></div>
-            <h3 className="text-white text-lg font-black font-display tracking-tight">近期考级</h3>
+            <div className="w-1 h-5 bg-[#8b5cf6] rounded-full shadow-[0_0_8px_#8b5cf6]"></div>
+            <h3 className="text-white text-xl font-black font-display tracking-tight italic">会员专享</h3>
           </div>
-          <p className="text-primary text-[11px] font-black italic tracking-tight">报名倒计时 3 天</p>
+          <div className="bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 px-3 py-1 rounded-lg text-[#c4b5fd] text-[9px] font-black tracking-widest italic">
+            SVIP 会员生效中
+          </div>
         </div>
-        
-        <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-gradient-to-br from-[#11294d] to-black shadow-2xl p-8">
-          <div className="relative z-10">
-            <div className="flex justify-between items-start mb-6">
-              <span className="bg-primary text-background-dark text-[10px] px-3 py-1 rounded-md font-black italic tracking-widest uppercase">正在报名</span>
-              <span className="material-symbols-outlined text-white/20">calendar_month</span>
-            </div>
-            
-            <h2 className="text-white text-2xl font-black font-display leading-tight mb-2 tracking-tight">2026年春季全国<br/>音乐素养考级</h2>
-            <p className="text-white/40 text-[10px] font-bold tracking-widest mb-8 uppercase leading-relaxed">中国音乐学院认证 · 全国统一考试 · 权威证书</p>
-            
-            <div className="flex items-center justify-between">
-              <button 
-                onClick={() => onNavigate(Page.Registration)}
-                className="bg-primary hover:bg-primary-dark text-background-dark px-10 py-3.5 rounded-full font-black text-sm tracking-widest flex items-center gap-2 shadow-xl shadow-primary/20 active:scale-95 transition-all italic"
-              >
-                立即报名 <span className="material-symbols-outlined text-lg">arrow_forward</span>
-              </button>
-              <div className="text-right">
-                <p className="text-white/30 text-[9px] font-black uppercase tracking-widest">已报名人数</p>
-                <p className="text-primary text-xl font-black font-display tracking-tighter">12,450</p>
+
+        <div className="flex gap-5 overflow-x-auto px-6 no-scrollbar snap-x">
+          {vipCourses.map((course) => (
+            <div 
+              key={course.id}
+              className={`min-w-[300px] snap-center bg-gradient-to-br ${course.gradient} rounded-[2.5rem] p-7 border border-white/10 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all group`}
+            >
+              <div className="absolute top-0 right-0 opacity-[0.03] translate-x-1/4 -translate-y-1/4">
+                <span className="material-symbols-outlined text-[180px] fill text-white">workspace_premium</span>
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-10">
+                  <div className="flex gap-4 items-center">
+                    <div className="size-14 rounded-2xl bg-black/30 backdrop-blur-md flex items-center justify-center text-[#8b5cf6] border border-white/10 shadow-inner group-hover:scale-110 transition-transform">
+                      <span className="material-symbols-outlined text-3xl fill">{course.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="text-white text-lg font-black font-display tracking-tight mb-1">{course.title}</h4>
+                      <p className="text-[#8b5cf6] text-[10px] font-bold tracking-tight">{course.org}</p>
+                    </div>
+                  </div>
+                  <span className="material-symbols-outlined text-white/20">stars</span>
+                </div>
+
+                <div className="flex justify-between items-end mb-3">
+                  <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest">学习进度</span>
+                  <span className="text-[#f2b90d] text-xl font-black font-display italic leading-none">{course.progress}%</span>
+                </div>
+
+                <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden mb-4">
+                  <div 
+                    className="h-full bg-gradient-to-r from-[#8b5cf6] to-[#f2b90d] rounded-full shadow-[0_0_12px_rgba(139,92,246,0.5)]" 
+                    style={{ width: `${course.progress}%` }}
+                  ></div>
+                </div>
+
+                <p className="text-white/20 text-[9px] font-bold uppercase tracking-widest text-right">有效期至 {course.expiry}</p>
               </div>
             </div>
-          </div>
-          <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none">
-            <img src="https://www.transparenttextures.com/patterns/carbon-fibre.png" className="w-full h-full object-cover" alt="" />
-          </div>
-        </div>
-      </section>
-
-      {/* 底部功能网格 */}
-      <section className="px-6 grid grid-cols-2 gap-4">
-        <div className="bg-[#152B4D]/30 border border-[#1A3A6B]/50 rounded-[1.8rem] p-5 flex flex-col gap-4 active:bg-white/10 transition-all">
-          <div className="flex justify-between items-center">
-            <h4 className="text-white text-sm font-black font-display tracking-tight">模拟考试</h4>
-            <span className="material-symbols-outlined text-primary text-xl fill">help_center</span>
-          </div>
-          <p className="text-white/30 text-[10px] font-bold leading-relaxed tracking-tight">考前自测 查漏补缺</p>
-        </div>
-
-        <div className="bg-[#152B4D]/30 border border-[#1A3A6B]/50 rounded-[1.8rem] p-5 flex flex-col gap-4 active:bg-white/10 transition-all">
-          <div className="flex justify-between items-center">
-            <h4 className="text-white text-sm font-black font-display tracking-tight">考级简章</h4>
-            <span className="material-symbols-outlined text-primary text-xl fill">description</span>
-          </div>
-          <p className="text-white/30 text-[10px] font-bold leading-relaxed tracking-tight">报考须知 考试大纲</p>
+          ))}
         </div>
       </section>
     </div>
