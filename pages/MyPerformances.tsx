@@ -21,7 +21,7 @@ const MyPerformances: React.FC<MyPerformancesProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-24">
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-6">
       <header className="sticky top-0 z-30 glass px-6 py-6 border-b border-white/5 flex items-center gap-4">
         <button onClick={() => onNavigate(Page.Mine)} className="material-symbols-outlined text-white/60">arrow_back_ios</button>
         <div>

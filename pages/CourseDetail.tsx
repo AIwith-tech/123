@@ -10,7 +10,7 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ onNavigate }) => {
   const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
   
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] pb-24 font-sans">
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] pb-20 font-sans">
       {/* 视频播放区 */}
       <div className="aspect-video w-full relative bg-black shadow-2xl">
         <img 

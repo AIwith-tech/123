@@ -11,90 +11,82 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
   
   const editorChoices = [
     { title: '赛博韵律：未来之音', tag: '本周最热', desc: '沉浸在电子合成器的海洋中', gradient: 'from-[#00c2ff]/20 to-transparent' },
-    { title: '传统新编：国风回响', tag: '独家首发', desc: '中国音乐学院优秀学子重新演绎', gradient: 'from-purple-500/20 to-transparent' },
-    { title: '校园歌手大赛集锦', tag: '新声代', desc: '聆听来自校园最纯粹、最动人的声音', gradient: 'from-orange-500/20 to-transparent' }
+    { title: '传统新编：国风回响', tag: '独家首发', desc: '中国音乐学院优秀学子重新演绎', gradient: 'from-purple-500/20 to-transparent' }
   ];
 
   const ringtoneFeeds = [
     { id: 1, user: '小林同学', title: '春日遐想', views: '2400', img: imageUrl },
     { id: 2, user: '大马克', title: '光影节拍', views: '1800', img: imageUrl },
-    { id: 3, user: '音乐生小张', title: '吉他独奏-夜', views: '3100', img: imageUrl },
-    { id: 4, user: '视觉实验室', title: '流动色彩', views: '980', img: imageUrl }
+    { id: 3, user: '音乐生小王', title: '高山流水', views: '3200', img: imageUrl },
+    { id: 4, user: '陈皮阿四', title: '塞上曲', views: '1500', img: imageUrl },
+    { id: 5, user: '小美', title: '江南烟雨', views: '4500', img: imageUrl }
   ];
 
   const musicList = [
-    { id: 'm1', title: '无尽夏日·序曲', sub: '中国音乐学院作曲系', time: '03:42', quality: '极高音质' },
-    { id: 'm2', title: '钢琴随想曲 第5号', sub: '李明 · 2023届毕业生', time: '04:15', quality: '高音质' },
-    { id: 'm3', title: '风的季节', sub: '校园民谣社', time: '03:20', quality: '高音质' },
-    { id: 'm4', title: '弦乐四重奏：黎明', sub: '室内乐团', time: '05:10', quality: '极高音质' }
+    { id: 'm1', title: '无尽夏日·序曲', sub: '中国音乐学院作曲系', time: '03:42', quality: 'SQ' },
+    { id: 'm2', title: '钢琴随想曲 第5号', sub: '李名 · 2023届毕业生', time: '04:15', quality: 'HQ' },
+    { id: 'm3', title: '云端漫步', sub: '民乐室内乐团', time: '02:58', quality: 'SQ' },
+    { id: 'm4', title: '深夜的萨克斯', sub: '爵士乐社', time: '05:10', quality: 'SQ' },
+    { id: 'm5', title: '竹林深处', sub: '笛子独奏', time: '03:20', quality: 'HQ' },
+    { id: 'm6', title: '赛博京剧', sub: '跨界实验组', time: '04:45', quality: 'SQ' },
+    { id: 'm7', title: '晨曦之光', sub: '合唱团', time: '04:02', quality: 'SQ' },
+    { id: 'm8', title: '落叶季节', sub: '民谣歌手', time: '03:35', quality: 'HQ' },
+    { id: 'm9', title: '海浪之声', sub: '环境音乐', time: '10:00', quality: 'SQ' },
+    { id: 'm10', title: '最后的狂想', sub: '交响乐团', time: '08:24', quality: 'SQ' }
   ];
 
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-6">
       <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col">
           <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">咪咕专区</h1>
+          <p className="text-[9px] text-primary/50 font-bold uppercase tracking-widest mt-0.5">Migu Special</p>
         </div>
-        <div className="flex items-center justify-center">
-          <button className="size-11 rounded-full bg-[#1A2C42]/60 border border-primary/30 flex items-center justify-center text-primary active:scale-90 transition-all shadow-inner">
-            <span className="material-symbols-outlined text-[28px] font-bold">add</span>
-          </button>
-        </div>
+        <button className="size-9 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary active:scale-90 transition-all">
+          <span className="material-symbols-outlined text-xl font-bold">add</span>
+        </button>
       </header>
 
-      <section className="pt-6">
-        <div className="px-6 flex items-center justify-between mb-4">
-           <div className="flex items-center gap-2">
-             <div className="w-1 h-4 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>
-             <h3 className="text-white text-base font-black font-display">编辑精选</h3>
-           </div>
-        </div>
+      <section className="pt-4">
         <div className="flex gap-4 overflow-x-auto px-6 no-scrollbar snap-x">
           {editorChoices.map((item, i) => (
-            <div key={i} className={`min-w-[280px] h-40 rounded-2xl p-5 border border-white/5 bg-gradient-to-br ${item.gradient} relative overflow-hidden snap-center`}>
-              <img src={imageUrl} className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30" alt="" />
+            <div key={i} className="min-w-[260px] aspect-[2.2/1] rounded-2xl p-4 border border-white/5 bg-[#112138] relative overflow-hidden snap-center group">
+              <img src={imageUrl} className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000" alt="" />
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div>
-                  <span className="bg-black/40 backdrop-blur-md px-2 py-0.5 rounded text-[8px] text-white font-black tracking-widest border border-white/10 mb-2 inline-block">
+                  <span className="bg-primary/20 backdrop-blur-md px-1.5 py-0.5 rounded text-[7px] text-primary font-black tracking-widest border border-primary/10 mb-1 inline-block">
                     {item.tag}
                   </span>
-                  <h4 className="text-white text-lg font-black font-display leading-tight">{item.title}</h4>
+                  <h4 className="text-white text-base font-black font-display tracking-tight leading-none">{item.title}</h4>
                 </div>
-                <p className="text-white/40 text-[10px] line-clamp-1">{item.desc}</p>
+                <p className="text-white/30 text-[9px] font-bold">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="pt-10">
-        <div className="px-6 flex items-center justify-between mb-5">
+      <section className="pt-8">
+        <div className="px-6 flex items-center justify-between mb-4">
            <div className="flex items-center gap-2">
-             <div className="w-1 h-4 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>
-             <h3 className="text-white text-base font-black font-display">精选视频彩铃</h3>
+             <div className="w-1 h-4 bg-[#00c2ff] rounded-full shadow-[0_0_5px_#00c2ff]"></div>
+             <h3 className="text-white text-base font-black font-display italic">视频彩铃精选</h3>
            </div>
-           <button className="text-white/30 text-[10px] font-bold flex items-center">
-             查看更多 <span className="material-symbols-outlined text-sm">chevron_right</span>
-           </button>
+           <button className="text-white/30 text-[10px] font-bold">更多</button>
         </div>
         
-        <div className="px-6 grid grid-cols-2 gap-4">
+        <div className="flex gap-4 overflow-x-auto px-6 no-scrollbar snap-x">
           {ringtoneFeeds.map(feed => (
-            <div key={feed.id} className="relative aspect-[9/16] rounded-2xl overflow-hidden border border-white/5 group active:scale-95 transition-all">
-              <img src={feed.img} className="w-full h-full object-cover" alt="" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-              
-              <div className="absolute inset-x-0 bottom-0 p-4">
-                <h4 className="text-white text-xs font-black mb-1 line-clamp-1">{feed.title}</h4>
-                <div className="flex items-center justify-between mb-3">
-                   <span className="text-white/40 text-[9px] font-bold">@{feed.user}</span>
-                   <span className="text-white/40 text-[9px] flex items-center gap-0.5">
-                     <span className="material-symbols-outlined text-[10px] fill">visibility</span>
-                     {feed.views}
-                   </span>
+            <div key={feed.id} className="min-w-[160px] relative aspect-[1/1.5] rounded-2xl overflow-hidden border border-white/5 snap-center group active:scale-95 transition-all">
+              <img src={feed.img} className="w-full h-full object-cover opacity-70" alt="" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute inset-x-0 bottom-0 p-3">
+                <h4 className="text-white text-xs font-black mb-0.5 line-clamp-1">{feed.title}</h4>
+                <div className="flex items-center justify-between mb-2">
+                   <span className="text-white/40 text-[8px] font-bold italic">@{feed.user}</span>
                 </div>
-                <button className="w-full py-2 bg-primary text-background-dark rounded-lg text-[10px] font-black tracking-widest italic flex items-center justify-center gap-1 shadow-lg shadow-primary/20 active:bg-white transition-colors">
-                  <span className="material-symbols-outlined text-xs fill">video_settings</span>
+                <button className="w-full py-1.5 bg-primary text-background-dark rounded-lg text-[9px] font-black tracking-widest italic flex items-center justify-center gap-1 shadow-lg shadow-primary/20">
+                  <span className="material-symbols-outlined text-[10px] fill">video_settings</span>
                   设为彩铃
                 </button>
               </div>
@@ -103,36 +95,29 @@ const Stage: React.FC<StageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      <section className="pt-12">
-        <div className="px-6 flex items-center justify-between mb-6">
+      <section className="pt-8 px-6">
+        <div className="flex items-center justify-between mb-4">
            <div className="flex items-center gap-2">
-             <div className="w-1 h-4 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>
-             <h3 className="text-white text-base font-black font-display">咪咕音乐首发</h3>
+             <div className="w-1 h-4 bg-[#f2b90d] rounded-full shadow-[0_0_5px_#f2b90d]"></div>
+             <h3 className="text-white text-base font-black font-display italic">咪咕音乐首发</h3>
            </div>
-           <button className="text-primary text-[10px] font-black flex items-center gap-1">
-             <span className="material-symbols-outlined text-sm fill">play_circle</span>
-             全部播放
-           </button>
+           <button className="text-white/30 text-[10px] font-bold">更多</button>
         </div>
 
-        <div className="px-6 space-y-1">
+        <div className="space-y-1">
           {musicList.map(music => (
-            <div key={music.id} className="flex items-center gap-4 py-3 active:bg-white/5 rounded-xl transition-all">
-              <div className="size-11 rounded-lg bg-[#152B4D] overflow-hidden border border-white/5 shrink-0">
-                <img src={imageUrl} className="w-full h-full object-cover opacity-60" alt="" />
+            <div key={music.id} className="flex items-center gap-3 py-2 active:bg-white/5 rounded-xl transition-all">
+              <div className="size-10 rounded-lg bg-[#152B4D] border border-white/5 shrink-0 overflow-hidden">
+                <img src={imageUrl} className="w-full h-full object-cover opacity-40" alt="" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-white text-[13px] font-black font-display truncate">{music.title}</h4>
-                  <span className="text-[7px] border border-white/20 text-white/40 px-1 rounded h-3 flex items-center font-bold">{music.quality}</span>
+                  <h4 className="text-white text-sm font-black font-display truncate tracking-tight">{music.title}</h4>
+                  <span className="text-[7px] border border-primary/40 text-primary px-0.5 rounded font-black">{music.quality}</span>
                 </div>
-                <p className="text-white/30 text-[10px] font-medium truncate mt-0.5">{music.sub}</p>
+                <p className="text-white/30 text-[9px] font-bold truncate mt-0.5 italic">{music.sub}</p>
               </div>
-              <div className="flex items-center gap-4 text-white/20">
-                <span className="text-[10px] font-bold">{music.time}</span>
-                <span className="material-symbols-outlined text-lg">favorite</span>
-                <span className="material-symbols-outlined text-lg">more_vert</span>
-              </div>
+              <span className="material-symbols-outlined text-white/20 text-lg">more_vert</span>
             </div>
           ))}
         </div>

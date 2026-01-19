@@ -19,7 +19,7 @@ const AIRefine: React.FC<AIRefineProps> = ({ onNavigate }) => {
         </div>
       </header>
 
-      <main className="flex-1 p-4 pb-24">
+      <main className="flex-1 p-4 pb-20">
         <div className="bg-surface-dark rounded-3xl border border-white/5 p-8 mb-6 flex flex-col items-center justify-center relative overflow-hidden">
           <div className="absolute top-4 left-4 flex items-center gap-2">
             <span className={`w-2 h-2 rounded-full ${isRecording ? 'bg-red-500 animate-pulse' : 'bg-white/20'}`}></span>
@@ -56,7 +56,7 @@ const AIRefine: React.FC<AIRefineProps> = ({ onNavigate }) => {
             { song: '练习曲 Op.299 No.1', score: 92, date: '10分钟前', issue: '速度略快' },
             { song: '莫扎特 C大调奏鸣曲', score: 85, date: '昨天', issue: '力度不够均匀' },
           ].map((item, idx) => (
-            <div key={idx} className="bg-surface-dark/40 border border-white/5 p-5 rounded-2xl flex items-center justify-between active:bg-white/5 transition-all">
+            <div key={idx} className="bg-surface-dark/40 border border-white/5 p-5 rounded-2xl flex items-center justify-between active:bg-white/10 transition-all">
               <div>
                 <h4 className="text-white text-[13px] font-black font-display tracking-tight">{item.song}</h4>
                 <div className="flex gap-3 items-center mt-2">
