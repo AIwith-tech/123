@@ -55,7 +55,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-24">
       <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex flex-col">
-          <h1 className="text-white text-2xl font-black font-display tracking-tighter italic">课程中心</h1>
+          <h1 className="text-white text-2xl font-black font-display tracking-tighter italic">学习中心</h1>
         </div>
         <div className="flex items-center gap-6">
           <span className="material-symbols-outlined text-white/40 text-[26px]">search</span>
@@ -149,7 +149,7 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
           {vipCourses.map((course) => (
             <div 
               key={course.id}
-              className={`min-w-[300px] snap-center bg-gradient-to-br ${course.gradient} rounded-[2.5rem] p-7 border border-white/10 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all group`}
+              className={`min-w-[300px] snap-center bg-gradient-to-br ${course.gradient} rounded-[2rem] p-7 border border-white/10 shadow-2xl relative overflow-hidden active:scale-[0.98] transition-all group`}
             >
               <div className="absolute top-0 right-0 opacity-[0.03] translate-x-1/4 -translate-y-1/4">
                 <span className="material-symbols-outlined text-[180px] fill text-white">workspace_premium</span>

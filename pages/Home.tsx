@@ -64,7 +64,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div className="w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent absolute left-0 animate-scan shadow-[0_0_15px_#22d3ee]"></div>
           </div>
 
-          {/* 恢复底纹背景图标 */}
           <div className="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
              <span className="material-symbols-outlined text-9xl font-light rotate-12 text-cyan-400">psychology</span>
           </div>
@@ -85,7 +84,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onClick={() => onNavigate(Page.CourseCenter)}
           className="relative aspect-square bg-[#152B4D]/60 rounded-[2rem] border border-white/5 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden"
         >
-          {/* 恢复底纹背景图标 */}
           <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none">
              <span className="material-symbols-outlined text-9xl font-light rotate-12 text-white">menu_book</span>
           </div>
@@ -102,7 +100,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onClick={() => onNavigate(Page.OfflineStage)}
           className="relative aspect-square bg-[#152B4D]/60 rounded-[2rem] border border-white/5 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden"
         >
-          {/* 恢复底纹背景图标 */}
           <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none">
              <span className="material-symbols-outlined text-9xl font-light rotate-12 text-white">theater_comedy</span>
           </div>
@@ -119,7 +116,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onClick={() => onNavigate(Page.Registration)}
           className="relative aspect-square bg-[#152B4D]/60 rounded-[2rem] border border-white/5 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden"
         >
-          {/* 恢复底纹背景图标 */}
           <div className="absolute -right-4 -bottom-4 opacity-5 pointer-events-none">
              <span className="material-symbols-outlined text-9xl font-light rotate-12 text-white">verified</span>
           </div>
@@ -148,7 +144,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           ].map((item, i) => (
             <div 
               key={i} 
-              onClick={() => onNavigate(Page.CourseDetail)} 
+              onClick={() => onNavigate(Page.CourseCenter)} 
               className="bg-[#152B4D]/30 p-4 rounded-[1.8rem] flex items-center gap-5 border border-[#1A3A6B]/50 active:bg-white/5 transition-all group"
             >
               <div className="size-20 bg-[#0B1E3B] rounded-2xl overflow-hidden shrink-0 shadow-inner group-hover:scale-105 transition-transform border border-white/[0.03]">
