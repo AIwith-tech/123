@@ -94,7 +94,8 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
       <section className="mb-10">
         <div className="px-6 flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            <div className="w-1 h-5 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>
+            {/* 蓝色发光竖条 (参考图1) */}
+            <div className="w-1 h-5 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff] shrink-0"></div>
             <h3 className="text-white text-lg font-black font-display tracking-tight italic">已购课程</h3>
           </div>
           <button className="text-white/30 text-[11px] font-bold flex items-center gap-1 group">
@@ -142,7 +143,8 @@ const Study: React.FC<StudyProps> = ({ onNavigate }) => {
       <section className="mb-12">
         <div className="px-6 flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            <div className="w-1 h-5 bg-[#8b5cf6] rounded-full shadow-[0_0_8px_#8b5cf6]"></div>
+            {/* 紫色发光竖条 (参考图2) */}
+            <div className="w-1 h-5 bg-[#8b5cf6] rounded-full shadow-[0_0_8px_#8b5cf6] shrink-0"></div>
             <h3 className="text-white text-xl font-black font-display tracking-tight italic">会员专享</h3>
           </div>
           <div className="bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 px-3 py-1 rounded-lg text-[#c4b5fd] text-[9px] font-black tracking-widest italic">

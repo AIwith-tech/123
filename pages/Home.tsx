@@ -58,12 +58,10 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           onClick={() => onNavigate(Page.AIStudio)}
           className="relative aspect-square bg-gradient-to-br from-[#1A3A6B] to-[#11294d] rounded-[2rem] border border-cyan-500/30 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.15)]"
         >
-          {/* 背景动态扫描线 */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[scan_3s_linear_infinite]"></div>
           </div>
           
-          {/* 呼吸感边框光晕 */}
           <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-[2rem] animate-pulse"></div>
 
           <div className="relative z-10 size-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-background-dark transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
@@ -129,7 +127,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       {/* 今日精选 */}
       <section className="px-5 mb-10">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-white font-black text-lg font-display tracking-tight">今日精选推荐</h3>
+          <div className="flex items-center gap-2">
+            {/* 黄色发光竖条 (参考图3) */}
+            <div className="w-1 h-5 bg-[#f2b90d] rounded-full shadow-[0_0_8px_#f2b90d] shrink-0"></div>
+            <h3 className="text-white font-black text-lg font-display tracking-tight">今日精选推荐</h3>
+          </div>
           <span className="text-[10px] text-white/30 font-bold tracking-widest">精品推荐</span>
         </div>
         
