@@ -1,8 +1,5 @@
 {
   "name": "咪咕音乐 × 中国音乐学院 - 智慧音乐H5",
-  "description": "集音乐考级、在线课程、AI琴房及作品展示于一体的专业音乐教育平台。",
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ]
+  "description": "集音乐考级、在线课程、智慧琴房及作品展示于一体的专业音乐教育平台。",
+  "requestFramePermissions": []
 }

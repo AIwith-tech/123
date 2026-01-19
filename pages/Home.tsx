@@ -10,29 +10,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
 
   return (
-    <div className="flex flex-col min-h-full pb-28 bg-[#0B1E3B] font-sans">
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes rotate-glow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        .ai-studio-glow::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: conic-gradient(
-            transparent 0deg,
-            transparent 270deg,
-            #f2b90d 360deg
-          );
-          animation: rotate-glow 3s linear infinite;
-          z-index: 0;
-        }
-      `}} />
-
+    <div className="flex flex-col min-h-full pb-10 bg-[#0B1E3B] font-sans">
       {/* 顶部导航 */}
       <header className="sticky top-0 z-30 px-6 py-5 flex items-center justify-between glass border-b border-white/5">
         <div className="flex flex-col">
@@ -44,7 +22,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
         </div>
         <div className="flex items-center gap-5">
-          <span className="material-symbols-outlined text-white/40 text-2xl hover:text-primary transition-colors">search</span>
+          <span className="material-symbols-outlined text-white/40 text-2xl">search</span>
           <span className="material-symbols-outlined text-white/40 text-2xl">notifications</span>
         </div>
       </header>
@@ -61,7 +39,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="absolute inset-y-0 left-8 flex flex-col justify-center max-w-[80%]">
             <div className="inline-flex items-center gap-1.5 bg-primary/20 backdrop-blur-md px-2 py-0.5 rounded-full mb-2 border border-primary/20 w-fit">
                <span className="material-symbols-outlined text-[10px] text-primary fill">stars</span>
-               <span className="text-primary text-[8px] font-black uppercase tracking-widest">Event Live</span>
+               <span className="text-primary text-[8px] font-black uppercase tracking-widest">活动进行中</span>
             </div>
             <h2 className="text-white text-2xl font-black mb-1 font-display tracking-tight leading-tight">国风乐器·视频彩铃<br/><span className="text-primary italic">百万流量赛开启报名</span></h2>
             <p className="text-white/40 text-[9px] mb-4 font-medium uppercase tracking-widest">寻找最美国风演奏者 · 赢取丰厚奖金池</p>
@@ -75,21 +53,31 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
       {/* 核心入口矩阵 */}
       <section className="px-5 py-8 grid grid-cols-2 gap-4">
-        {/* AI 工作室 - 增加了流光跑马灯效果 */}
+        {/* AI实验室 - 升级动效 */}
         <div 
           onClick={() => onNavigate(Page.AIStudio)}
-          className="relative aspect-square rounded-[2rem] p-[1px] group active:scale-95 transition-all overflow-hidden ai-studio-glow shadow-2xl shadow-primary/10"
+          className="relative aspect-square bg-gradient-to-br from-[#1A3A6B] to-[#11294d] rounded-[2rem] border border-cyan-500/30 p-6 flex flex-col justify-between group active:scale-95 transition-all overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.15)]"
         >
-          <div className="relative z-10 w-full h-full bg-gradient-to-br from-[#1A3A6B] to-[#11294d] rounded-[calc(2.5rem-1px)] p-6 flex flex-col justify-between overflow-hidden">
-            <div className="size-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20 group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
-              <span className="material-symbols-outlined text-3xl fill">auto_awesome</span>
-            </div>
-            <div>
-              <h4 className="text-white text-base font-black mb-0.5 font-display tracking-tight">AI 工作室</h4>
-              <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest">Intelligent Lab</p>
-            </div>
-            <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-white/[0.03] text-8xl font-light rotate-12">bolt</span>
+          {/* 背景动态扫描线 */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[scan_3s_linear_infinite]"></div>
           </div>
+          
+          {/* 呼吸感边框光晕 */}
+          <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-[2rem] animate-pulse"></div>
+
+          <div className="relative z-10 size-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-background-dark transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+            <span className="material-symbols-outlined text-3xl fill animate-[pulse_2s_ease-in-out_infinite]">science</span>
+          </div>
+          
+          <div className="relative z-10">
+            <h4 className="text-white text-base font-black mb-0.5 font-display tracking-tight">AI实验室</h4>
+            <p className="text-cyan-400/50 text-[9px] font-bold uppercase tracking-widest italic flex items-center gap-1">
+              <span className="size-1 rounded-full bg-cyan-400 animate-ping"></span>
+              智能创作空间
+            </p>
+          </div>
+          <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-cyan-400/[0.05] text-8xl font-light rotate-12">psychology</span>
         </div>
 
         {/* 课程中心 */}
@@ -102,7 +90,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           <div>
             <h4 className="text-white text-base font-black mb-0.5 font-display tracking-tight">课程中心</h4>
-            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest">Academy</p>
+            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest italic">专业体系课程</p>
           </div>
           <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-white/[0.03] text-8xl font-light rotate-12">menu_book</span>
         </div>
@@ -117,7 +105,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           <div>
             <h4 className="text-white text-base font-black mb-0.5 font-display tracking-tight">展演舞台</h4>
-            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest">Live Stage</p>
+            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest italic">线下演出机会</p>
           </div>
           <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-white/[0.03] text-8xl font-light rotate-12">theater_comedy</span>
         </div>
@@ -132,7 +120,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
           <div>
             <h4 className="text-white text-base font-black mb-0.5 font-display tracking-tight">考级报名</h4>
-            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest">Level Exam</p>
+            <p className="text-white/30 text-[9px] font-bold uppercase tracking-widest italic">权威考级服务</p>
           </div>
           <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-white/[0.03] text-8xl font-light rotate-12">verified_user</span>
         </div>
@@ -142,7 +130,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <section className="px-5 mb-10">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-white font-black text-lg font-display tracking-tight">今日精选推荐</h3>
-          <span className="text-[10px] text-white/30 font-bold tracking-widest uppercase">EDITOR'S PICKS</span>
+          <span className="text-[10px] text-white/30 font-bold tracking-widest">精品推荐</span>
         </div>
         
         <div className="space-y-4">
@@ -174,6 +162,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           ))}
         </div>
       </section>
+
+      <style>{`
+        @keyframes scan {
+          0% { top: -10%; }
+          100% { top: 110%; }
+        }
+      `}</style>
     </div>
   );
 };

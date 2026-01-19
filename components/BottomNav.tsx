@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Page } from '../types';
 
@@ -16,17 +15,19 @@ const BottomNav: React.FC<BottomNavProps> = ({ current, onNavigate }) => {
   ];
 
   return (
-    /* 添加 safe-area-inset-bottom 的内边距，确保在 iPhone 等手机底部手势条上方显示 */
     <nav 
-      className="glass border-t border-white/5 pt-3 px-6 flex justify-between items-center z-50 fixed bottom-0 left-0 right-0 w-full"
-      style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 0.75rem)' }}
+      className="glass border-t border-white/10 px-6 flex justify-between items-center z-50 shrink-0 w-full"
+      style={{ 
+        paddingTop: '0.75rem',
+        paddingBottom: 'calc(env(safe-area-inset-bottom) + 0.75rem)' 
+      }}
     >
       {items.map((item) => (
         <button
           key={item.key}
           onClick={() => onNavigate(item.key)}
-          className={`flex flex-col items-center gap-1 transition-all ${
-            current === item.key ? 'text-primary scale-110' : 'text-white/30'
+          className={`flex flex-col items-center gap-1.5 transition-all duration-300 ${
+            current === item.key ? 'text-primary scale-105' : 'text-white/30'
           }`}
         >
           <span className={`material-symbols-outlined text-[26px] ${current === item.key ? 'fill' : 'font-light'}`}>

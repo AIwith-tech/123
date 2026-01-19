@@ -7,174 +7,208 @@ interface CourseCenterProps {
 }
 
 const CourseCenter: React.FC<CourseCenterProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState('music');
+  const [activeTab, setActiveTab] = useState<'buyout' | 'subscribe'>('buyout');
   const imageUrl = "https://i.imgs.ovh/2026/01/14/yv8QAU.png";
 
-  const masterCourses = [
-    { 
-      title: '非遗文化：古琴艺术指法深度解析', 
-      teacher: '龚一 教授', 
-      tag: '非遗国家级传承人', 
-      price: '¥399', 
-      img: imageUrl 
+  const buyoutCourses = [
+    {
+      id: 1,
+      tag: '大师班',
+      title: '大师钢琴课：情感与技巧的深度融合',
+      teacher: '李教授',
+      org: '中国音乐学院',
+      oldPrice: '¥399',
+      price: '¥199',
+      action: '购买',
+      type: 'buy'
     },
-    { 
-      title: '德奥经典：钢琴演奏的逻辑与美学', 
-      teacher: '杨韵琳 教授', 
-      tag: '国音钢琴系主任', 
-      price: '¥599', 
-      img: imageUrl 
+    {
+      id: 2,
+      tag: '名师',
+      title: '古筝入门：从零开始的国乐之旅',
+      teacher: '张老师',
+      org: '资深演奏家',
+      oldPrice: '¥259',
+      price: '¥129',
+      action: '试看',
+      type: 'trial'
     },
-    { 
-      title: '流行前沿：现代音乐制作与编曲思维', 
-      teacher: '知名制作人 A', 
-      tag: '金牌制作人', 
-      price: '¥499', 
-      img: imageUrl 
+    {
+      id: 3,
+      tag: '大师班',
+      title: '小提琴进阶：揉弦与拨奏的艺术',
+      teacher: '王教授',
+      org: '中国音乐学院',
+      oldPrice: '¥459',
+      price: '¥299',
+      action: '购买',
+      type: 'buy'
     }
   ];
 
-  const engineerModules = [
-    { title: 'AI 交互作曲', icon: 'bolt', desc: '基于大模型的旋律生成', level: 'Level 1' },
-    { title: '神经音频引擎', icon: 'memory', desc: '实时音色迁移技术', level: 'Level 2' },
-    { title: '空间音频混音', icon: 'surround_sound', desc: '全景声与算法驱动', level: 'Level 3' },
-    { title: '虚拟人乐手', icon: 'face_retouching_natural', desc: '动作捕捉与智能演奏', level: 'Level 2' }
+  const certifications = [
+    {
+      id: 'ai_music',
+      title: 'AI 音乐工程师认证',
+      issuer: '中国音乐学院 × 咪咕音乐',
+      issuerType: '联合认证',
+      icon: 'music_note',
+      gradient: 'from-[#8b5cf6] to-[#6d28d9]',
+      tag: '专业音乐背景'
+    },
+    {
+      id: 'aigc_app',
+      title: '生成式人工智能（AIGC）应用工程师认证',
+      issuer: '中国移动元宇宙数智赋能中心',
+      issuerType: '官方颁发',
+      icon: 'psychology',
+      gradient: 'from-[#4f46e5] to-[#3730a3]',
+      tag: '前沿科技赋能'
+    }
   ];
 
   return (
-    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-32">
-      <header className="sticky top-0 z-30 glass px-6 py-6 border-b border-white/5">
-        <div className="flex items-center gap-4">
-          <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white/60">arrow_back_ios</button>
-          <div>
-            <h1 className="text-white text-xl font-black font-display tracking-tight italic">课程中心</h1>
-            <p className="text-[9px] text-primary/60 font-black uppercase tracking-[0.3em]">Knowledge Powerhouse</p>
-          </div>
-        </div>
+    <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans overflow-hidden">
+      {/* 顶部导航 */}
+      <header className="sticky top-0 z-50 glass px-6 py-5 flex items-center justify-between border-b border-white/5">
+        <button onClick={() => onNavigate(Page.Home)} className="material-symbols-outlined text-white text-2xl">arrow_back_ios</button>
+        <h1 className="text-white text-lg font-bold tracking-tight">课程中心</h1>
+        <button className="material-symbols-outlined text-white text-2xl">more_horiz</button>
       </header>
 
-      {/* 顶部标签切换 - 悬浮胶囊样式 */}
-      <nav className="flex p-2 m-6 bg-white/5 rounded-2xl border border-white/5 sticky top-[84px] z-20 backdrop-blur-xl">
-        {[
-          { id: 'music', label: '精品课' },
-          { id: 'master', label: '大师课' },
-          { id: 'engineer', label: 'AI音乐工程师' }
-        ].map(tab => (
+      {/* 顶部切换 Tab */}
+      <div className="px-6 py-4 sticky top-[68px] z-40 bg-[#0B1E3B]">
+        <div className="flex p-1 bg-white/5 rounded-2xl border border-white/5 shadow-inner">
           <button 
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 py-3 text-[11px] font-black transition-all rounded-xl ${activeTab === tab.id ? 'bg-primary text-background-dark shadow-lg shadow-primary/20' : 'text-white/40 hover:text-white/60'}`}
+            onClick={() => setActiveTab('buyout')}
+            className={`flex-1 py-3 text-sm font-bold transition-all rounded-xl relative ${activeTab === 'buyout' ? 'text-white' : 'text-white/40'}`}
           >
-            {tab.label}
+            精品课程
+            {activeTab === 'buyout' && <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>}
           </button>
-        ))}
-      </nav>
+          <button 
+            onClick={() => setActiveTab('subscribe')}
+            className={`flex-1 py-3 text-sm font-bold transition-all rounded-xl relative ${activeTab === 'subscribe' ? 'text-white' : 'text-white/40'}`}
+          >
+            会员专享
+            {activeTab === 'subscribe' && <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-8 h-1 bg-[#00c2ff] rounded-full shadow-[0_0_8px_#00c2ff]"></div>}
+          </button>
+        </div>
+      </div>
 
-      <main className="px-6">
-        {/* 精品课 - 垂直双栏布局 */}
-        {activeTab === 'music' && (
-          <div className="grid grid-cols-1 gap-6">
-            {[
-              { title: '乐理基础必修：从零开始识五线谱', teacher: '王莉', students: '4.2w', price: '¥49', img: imageUrl },
-              { title: '钢琴考级精讲：莫扎特奏鸣曲集', teacher: '陈思教授', students: '1.5w', price: '¥199', img: imageUrl },
-              { title: '民乐入门：二胡基础弓法实践', teacher: '张悦老师', students: '8k', price: '¥128', img: imageUrl }
-            ].map((course, i) => (
-              <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="bg-white/5 rounded-[2.5rem] p-4 flex gap-5 border border-white/5 active:scale-95 transition-all group shadow-xl">
-                <div className="size-28 rounded-3xl overflow-hidden shrink-0 shadow-lg group-hover:scale-105 transition-transform">
-                  <img src={course.img} className="w-full h-full object-cover" alt={course.title} />
+      <main className="px-6 pb-20 flex-1 overflow-y-auto no-scrollbar">
+        {activeTab === 'buyout' ? (
+          <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="flex items-center justify-between mb-6 mt-2">
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-[#00c2ff] text-xl fill">auto_awesome</span>
+                  <h2 className="text-white text-xl font-bold font-display tracking-tight">精品课程</h2>
                 </div>
-                <div className="flex-1 flex flex-col justify-between py-1">
-                  <div>
-                    <h4 className="text-white text-sm font-black font-display leading-tight line-clamp-2">{course.title}</h4>
-                    <p className="text-white/40 text-[9px] font-bold mt-2 tracking-widest uppercase">{course.teacher} · {course.students}人已学</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-primary text-base font-black italic tracking-tighter">{course.price}</span>
-                    <div className="size-8 rounded-full bg-white/10 flex items-center justify-center text-white/20 group-hover:text-primary transition-colors">
-                      <span className="material-symbols-outlined text-base">arrow_forward</span>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-[#00c2ff] text-[11px] font-bold tracking-tight opacity-80">一次购买，终身学习</p>
               </div>
-            ))}
-          </div>
-        )}
-
-        {/* 大师课 - 宽幅艺术卡片 */}
-        {activeTab === 'master' && (
-          <div className="space-y-10">
-            {masterCourses.map((c, i) => (
-              <div key={i} onClick={() => onNavigate(Page.CourseDetail)} className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden group shadow-2xl border border-white/10">
-                <img src={c.img} className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" alt={c.title} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-black/30"></div>
-                
-                <div className="absolute top-6 left-6">
-                  <span className="bg-primary/90 text-background-dark text-[10px] font-black px-4 py-1.5 rounded-full italic tracking-widest uppercase shadow-xl">MASTER</span>
-                </div>
-
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="bg-white/10 backdrop-blur-md text-white text-[9px] font-black px-3 py-1 rounded-full border border-white/10">{c.tag}</span>
-                  </div>
-                  <h3 className="text-white text-2xl font-black font-display leading-tight mb-4">{c.title}</h3>
-                  <div className="flex items-center justify-between">
-                    <p className="text-white/60 text-xs font-bold">{c.teacher}</p>
-                    <span className="text-primary text-lg font-black italic">{c.price}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* AI音乐工程师 */}
-        {activeTab === 'engineer' && (
-          <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="relative bg-[#1A3A6B]/30 rounded-[3rem] border border-white/10 p-10 overflow-hidden shadow-2xl">
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="size-12 rounded-2xl bg-primary flex items-center justify-center text-background-dark shadow-lg">
-                    <span className="material-symbols-outlined text-3xl fill">memory</span>
-                  </div>
-                  <div>
-                    <span className="text-white text-lg font-black font-display block leading-none">AI 音乐工程师</span>
-                    <span className="text-primary/60 text-[9px] font-black uppercase tracking-[0.2em]">Professional Certification</span>
-                  </div>
-                </div>
-
-                <h2 className="text-white text-3xl font-black italic tracking-tighter mb-4 leading-none">定义音乐<br/>的下一个时代</h2>
-                <p className="text-white/40 text-[10px] font-bold leading-relaxed mb-10 max-w-[80%] uppercase tracking-widest">中国音乐学院 × 咪咕音乐 联合认证</p>
-                
-                <div className="flex flex-col gap-3">
-                  <button className="h-14 bg-white text-background-dark rounded-2xl font-black text-sm tracking-widest italic flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl shadow-white/5">
-                    立即加入认证计划
-                    <span className="material-symbols-outlined text-lg">bolt</span>
-                  </button>
-                </div>
-              </div>
-              <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-                 <span className="material-symbols-outlined text-[12rem] font-light rotate-12">terminal</span>
-              </div>
+              <button className="text-white/30 text-[11px] font-bold flex items-center">
+                全部 <span className="material-symbols-outlined text-sm ml-0.5">chevron_right</span>
+              </button>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                 <h4 className="text-white font-black text-base font-display">核心技能矩阵</h4>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {engineerModules.map((m, i) => (
-                  <div key={i} className="bg-white/5 border border-white/5 p-6 rounded-[2.5rem] group hover:border-primary/20 transition-all">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 group-hover:text-primary transition-colors">
-                        <span className="material-symbols-outlined text-2xl fill">{m.icon}</span>
-                      </div>
-                      <span className="text-[8px] font-black text-white/20 uppercase tracking-widest">{m.level}</span>
+            <div className="space-y-4">
+              {buyoutCourses.map(course => (
+                <div key={course.id} className="bg-[#112138] border border-white/5 rounded-[1.8rem] p-4 flex gap-4 active:scale-[0.98] transition-all shadow-xl">
+                  <div className="relative size-28 shrink-0">
+                    <img src={imageUrl} className="w-full h-full object-cover rounded-2xl opacity-90 shadow-lg" alt="" />
+                    <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[9px] text-white font-bold border border-white/10">
+                      {course.tag}
                     </div>
-                    <h5 className="text-white text-xs font-black mb-1 font-display">{m.title}</h5>
-                    <p className="text-white/30 text-[9px] font-bold leading-relaxed">{m.desc}</p>
                   </div>
-                ))}
+                  <div className="flex-1 flex flex-col justify-between py-0.5">
+                    <div>
+                      <h4 className="text-white text-[15px] font-bold leading-snug line-clamp-2 font-display">{course.title}</h4>
+                      <p className="text-white/40 text-[11px] mt-2 flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-[13px] opacity-60">school</span>
+                        {course.teacher} · {course.org}
+                      </p>
+                    </div>
+                    <div className="flex items-end justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-white/20 text-[10px] line-through font-medium mb-0.5">{course.oldPrice}</span>
+                        <span className="text-[#00c2ff] text-lg font-black font-display tracking-tighter italic leading-none">{course.price}</span>
+                      </div>
+                      <button className={`flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl text-[12px] font-black transition-all shadow-lg ${
+                        course.type === 'buy' 
+                          ? 'bg-[#00c2ff] text-background-dark shadow-[#00c2ff]/10' 
+                          : 'bg-white/5 text-white/70 border border-white/10'
+                      }`}>
+                        {course.action}
+                        <span className="material-symbols-outlined text-sm fill">{course.type === 'buy' ? 'shopping_bag' : 'play_circle'}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pt-2 space-y-6">
+            {/* 会员专享卡片列表 */}
+            {certifications.map((cert) => (
+              <div 
+                key={cert.id}
+                className={`relative w-full bg-gradient-to-br ${cert.gradient} rounded-[2rem] p-6 shadow-xl border border-white/10 overflow-hidden active:scale-[0.98] transition-all`}
+              >
+                {/* 装饰性水印与微光 */}
+                <div className="absolute -top-10 -right-10 size-32 bg-white/10 blur-3xl rounded-full"></div>
+                <div className="absolute right-4 bottom-4 opacity-5 pointer-events-none">
+                  <span className="material-symbols-outlined text-8xl fill text-white">{cert.icon}</span>
+                </div>
+
+                <div className="relative z-10">
+                  {/* 卡片头部：小标签 */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[8px] text-white font-black uppercase tracking-widest border border-white/5">
+                      {cert.issuerType}
+                    </span>
+                    <span className="text-white/40 text-[9px] font-bold tracking-tighter">
+                      {cert.tag}
+                    </span>
+                  </div>
+
+                  {/* 标题 */}
+                  <h3 className="text-white text-xl font-black italic tracking-tighter leading-tight mb-3 pr-10">
+                    {cert.title}
+                  </h3>
+
+                  {/* 颁发单位 */}
+                  <div className="flex items-center gap-2 mb-8">
+                    <div className="size-6 rounded-lg bg-white/10 flex items-center justify-center border border-white/10">
+                      <span className="material-symbols-outlined text-primary text-[14px] fill">verified</span>
+                    </div>
+                    <p className="text-white/60 text-[10px] font-bold tracking-tight">
+                      {cert.issuer}
+                    </p>
+                  </div>
+
+                  {/* 底部购买区 */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-white/30 text-[9px] font-bold uppercase tracking-wider">MONTHLY FEE</span>
+                      <span className="text-white text-xl font-black font-display italic leading-none">¥ 29.0 <span className="text-[10px] font-normal not-italic opacity-40">/ 月</span></span>
+                    </div>
+                    <button className="bg-[#f2b90d] text-[#3d2c04] px-6 py-2.5 rounded-xl font-black text-[11px] tracking-widest italic shadow-lg flex items-center gap-1.5 active:scale-95 transition-all">
+                      立即开启
+                      <span className="material-symbols-outlined text-sm">bolt</span>
+                    </button>
+                  </div>
+                </div>
               </div>
+            ))}
+
+            {/* 底部补充说明 */}
+            <div className="pt-4 text-center">
+              <p className="text-white/20 text-[9px] font-bold tracking-[0.2em] uppercase leading-relaxed px-8">
+                双认证体系 · 助力职业进阶<br/>
+                咪咕音乐与中国移动元宇宙数智赋能中心联合打造
+              </p>
             </div>
           </div>
         )}
