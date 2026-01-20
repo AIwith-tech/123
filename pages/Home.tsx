@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <h1 className="text-white text-2xl font-black italic tracking-widest leading-none mb-0.5 font-display">
-              ME<span className="text-primary not-italic ml-1.5 text-xl">学院</span>
+              国风<span className="text-primary not-italic ml-1.5 text-xl">音乐学院</span>
             </h1>
             <p className="text-[9px] text-white/50 font-bold tracking-wider">咪咕音乐 X 中国音乐学院 联合出品</p>
           </div>

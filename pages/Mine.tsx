@@ -11,10 +11,10 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
 
   return (
     <div className="flex flex-col min-h-full bg-[#0B1E3B] font-sans pb-6">
-      <header className="sticky top-0 z-40 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-30 glass border-b border-white/5 px-6 py-4 flex items-center justify-between">
         <div className="flex flex-col">
-          <h1 className="text-white text-2xl font-black font-display tracking-tighter italic leading-none">个人中心</h1>
-          <p className="text-[9px] text-primary/50 font-bold uppercase tracking-widest mt-0.5">Member Profile</p>
+          <h1 className="text-white text-2xl font-black font-display tracking-tight italic leading-none mb-0.5">个人中心</h1>
+          <p className="text-[9px] text-white/50 font-bold uppercase tracking-wider">Member Profile</p>
         </div>
         <button className="text-white/40">
           <span className="material-symbols-outlined text-xl">settings</span>
@@ -56,7 +56,7 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 恢复作品发行模块 */}
+      {/* 作品发行模块 - 已统一样式 */}
       <section className="px-6 mb-6 mt-4">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-1 h-4 bg-primary rounded-full shadow-[0_0_5px_#f2b90d]"></div>
@@ -68,8 +68,8 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
                 <span className="material-symbols-outlined text-xl fill">video_call</span>
              </div>
              <div>
-                <h4 className="text-white text-[13px] font-black font-display">视频彩铃发行</h4>
-                <p className="text-white/30 text-[9px] font-bold tracking-tight">让演奏成为他人的来电风景</p>
+                <h4 className="text-white text-base font-black font-display tracking-tight">视频彩铃发行</h4>
+                <p className="text-white/30 text-[9px] font-bold tracking-tight italic">让演奏成为他人的来电风景</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto text-lg">chevron_right</span>
           </div>
@@ -78,8 +78,8 @@ const Mine: React.FC<MineProps> = ({ onNavigate }) => {
                 <span className="material-symbols-outlined text-xl fill">album</span>
              </div>
              <div>
-                <h4 className="text-white text-[13px] font-black font-display">咪咕音乐发行</h4>
-                <p className="text-white/30 text-[9px] font-bold tracking-tight">开启全球数字流媒体发行</p>
+                <h4 className="text-white text-base font-black font-display tracking-tight">咪咕音乐发行</h4>
+                <p className="text-white/30 text-[9px] font-bold tracking-tight italic">开启全球数字流媒体发行</p>
              </div>
              <span className="material-symbols-outlined text-white/10 ml-auto text-lg">chevron_right</span>
           </div>
